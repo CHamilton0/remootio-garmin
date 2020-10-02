@@ -1,22 +1,31 @@
 using Toybox.Application;
+using Toybox.System;
 
-class RemootioApp extends Application.AppBase {
+class RemootioApp extends Application.AppBase 
+{
+	hidden var view;
 
-    function initialize() {
+    function initialize() 
+    {
         AppBase.initialize();
     }
 
     // onStart() is called on application start up
-    function onStart(state) {
+    function onStart(state) 
+    {
+    
     }
 
     // onStop() is called when your application is exiting
-    function onStop(state) {
+    function onStop(state) 
+    {
     }
 
     // Return the initial view of your application here
-    function getInitialView() {
-        return [ new RemootioView() ];
+    function getInitialView() 
+    {
+    	view = new RemootioView();
+        return [view, new RemootioDelegate()];
     }
 
 }
