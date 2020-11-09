@@ -32,6 +32,7 @@ class RemootioAPI
 
 	function initialize()
 	{
+		//Set config
 		websocketClient = null;
 		apiSessionKey = null;
 		lastActionId = null;
@@ -46,9 +47,21 @@ class RemootioAPI
 		
 	}
 
-	function connect(autoReconnect)
+	function connect(reconnect)
 	{
-	
+		if(reconnect == true)
+		{
+			autoReconnect = true;
+		}
+		
+		apiSessionKey = null;
+		lastActionId = null;
+		waitingForAuthenticationQueryActionResponse = null;
+		
+		//send request to http server to connect to websocket
+		//use websocket to connect to device IP
+		//do websocket stuff on server side
+		
 	}
 	
 	function disconnect()
