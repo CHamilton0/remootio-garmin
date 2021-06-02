@@ -1,8 +1,13 @@
 <layout id="MainLayout">
-    <button x="center" y="center" width="120" height="120" background="Gfx.COLOR_WHITE" behavior="onButton">
-    	<state id="stateDefault" bitmap="@Drawables.Remootio" />
-        <state id="stateHighlighted" bitmap="@Drawables.Monkey" />
-        <state id="stateSelected" bitmap="@Drawables.Monkey" />
-        <state id="stateDisabled" color="Gfx.COLOR_BLACK" />
-	</button>
+    <bitmap id ="icon" x="center" y="120" filename="../drawables/remootio.png"> </bitmap>
+    <button x="0" y="100" width="50" height="50" background="Graphics.COLOR_WHITE" behavior="checkIP">
+    	<state id="stateDefault" color="Graphics.COLOR_WHITE" />
+    </button>
+    <button x = "200" y = "100" width="50" height = "50" background = "Graphics.COLOR_RED" behavior="switchDoor">
+        <state id="stateDefault" color="Graphics.COLOR_RED"/>
+        <state id="stateSelected" color = "Graphics.COLOR_BLUE"/>
+        <state id="stateHighlighted" color ="Graphics.COLOR_YELLOW"/>
+        <state id="stateDisabled" color = "Graphics.COLOR_BLACK"/>
+    </button>
+    <label id="state" text="State information" x="center" y="50" justification="Graphics.TEXT_JUSTIFY_CENTER"/>
 </layout>

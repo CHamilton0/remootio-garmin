@@ -5,7 +5,7 @@ using Toybox.Cryptography;
 
 class RemootioDelegate extends WatchUi.BehaviorDelegate
 {
-	var API_AUTH = "DCE3B091456AEA890F7C9999FAD8AC6B3EEED7EAEEA50DB467C5549849A62CF8";
+	var API_AUTH = "";
 	var foundIP = 0;
 	var currentState = "Closed";
 	var currentDoor = "garage";
