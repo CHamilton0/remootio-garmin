@@ -1,5 +1,6 @@
 using Toybox.Application;
 using Toybox.System;
+using Toybox.Communications;
 
 class RemootioApp extends Application.AppBase 
 {
@@ -13,7 +14,7 @@ class RemootioApp extends Application.AppBase
     // onStart() is called on application start up
     function onStart(state) 
     {
-    
+        
     }
 
     // onStop() is called when your application is exiting
