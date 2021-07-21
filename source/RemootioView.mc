@@ -4,46 +4,46 @@ using Toybox.Communications;
 
 class RemootioView extends WatchUi.View 
 {
-	var stateText;
-	
-	var currentState = "Closed";
+  var stateText;
+  
+  var currentState = "Closed";
 
 
-	function updateState(data)
-	{
-		currentState = data["state"];
-		//stateText = View.findDrawableById("state");   
-    	//stateText.setText(currentState);
-		WatchUi.requestUpdate();
-	}
-	
-	function onReceive(responseCode, data) {
-		if (responseCode == 200) 
-		{
-			System.println("Layout State Request Successful");
-			System.println("Response: " + responseCode + " Data: " + data);  
-		}
-		else 
-		{
-			System.println("Response: " + responseCode + " Data: " + data);
-		}
-		updateState(data);
-	}
-	
-	function checkState()
-	{
-		var url = "https://remootio-server.glitch.me/state";
-		var params = {};
-		var options = { // set the options
-		:method => Communications.HTTP_REQUEST_METHOD_GET,
-		:headers => 
-		{
-			"Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-			:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-		};
-		var responseCallback = method(:onReceive);
-		Communications.makeWebRequest(url, params, options, method(:onReceive));
-	}
+  function updateState(data)
+  {
+    currentState = data["state"];
+    //stateText = View.findDrawableById("state");   
+      //stateText.setText(currentState);
+    WatchUi.requestUpdate();
+  }
+  
+  function onReceive(responseCode, data) {
+    if (responseCode == 200) 
+    {
+      System.println("Layout State Request Successful");
+      System.println("Response: " + responseCode + " Data: " + data);  
+    }
+    else 
+    {
+      System.println("Response: " + responseCode + " Data: " + data);
+    }
+    updateState(data);
+  }
+  
+  function checkState()
+  {
+    var url = "https://remootio-server.glitch.me/state";
+    var params = {};
+    var options = { // set the options
+    :method => Communications.HTTP_REQUEST_METHOD_GET,
+    :headers => 
+    {
+      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+    };
+    var responseCallback = method(:onReceive);
+    Communications.makeWebRequest(url, params, options, method(:onReceive));
+  }
 
     function initialize() 
     {
@@ -52,12 +52,12 @@ class RemootioView extends WatchUi.View
     }
 
 
-	var button;
+  var button;
     // Load your resources here
     function onLayout(dc) 
     {
-       	setLayout(Rez.Layouts.MainLayout(dc));
-       	checkState();
+         setLayout(Rez.Layouts.MainLayout(dc));
+         
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -65,14 +65,14 @@ class RemootioView extends WatchUi.View
     // loading resources into memory.
     function onShow() 
     {
-    
+    checkState();
     }
 
     // Update the view
     function onUpdate(dc) 
     {
         stateText = View.findDrawableById("state");   
-    	stateText.setText(currentState);
+      stateText.setText(currentState);
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
     }
@@ -82,12 +82,12 @@ class RemootioView extends WatchUi.View
     // memory.
     function onHide() 
     {
-    	WatchUi.requestUpdate();
+
     }
     
     function onRecieve(args)
     {
-    	WatchUi.requestUpdate();
+      WatchUi.requestUpdate();
     }
 
 }
