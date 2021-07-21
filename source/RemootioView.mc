@@ -56,7 +56,7 @@ class RemootioView extends WatchUi.View
     // Load your resources here
     function onLayout(dc) 
     {
-         setLayout(Rez.Layouts.MainLayout(dc));
+      setLayout(Rez.Layouts.MainLayout(dc));
          
     }
 
@@ -65,16 +65,16 @@ class RemootioView extends WatchUi.View
     // loading resources into memory.
     function onShow() 
     {
-    checkState();
+      checkState();
     }
 
     // Update the view
     function onUpdate(dc) 
     {
-        stateText = View.findDrawableById("state");   
+      stateText = View.findDrawableById("state");   
       stateText.setText(currentState);
-        // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc);
+      // Call the parent onUpdate function to redraw the layout
+      View.onUpdate(dc);
     }
 
     // Called when this View is removed from the screen. Save the

@@ -5,22 +5,17 @@ using Toybox.Cryptography;
 
 class RemootioDelegate extends WatchUi.BehaviorDelegate
 {
-  constant API_AUTH = "";
-  let foundIP = 0;
-  let currentState = "Closed";
-  let currentDoor = "garage";
-  let button;
+  const API_AUTH = "";
+  var foundIP = 0;
+  var button;
 
-  function switchDoor()
+  var door;
+
+  function initialize()
   {
-    if(currentDoor == "garage")
-    {
-      currentDoor = "gate";
-    }
-    else
-    {
-      currentDoor = "garage";
-    }
+    WatchUi.BehaviorDelegate.initialize();
+
+    door = new RemootioDoor(0, 0);
   }
   
   function onReceive(responseCode, data) {
@@ -81,8 +76,9 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
       System.println("Start/stop button pressed");
-      makeRequest();
-      RemootioView.checkState();
+      //makeRequest();
+      //RemootioView.checkState();
+      door.switchState();
     }
         return true;
   }
@@ -93,6 +89,20 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     foundIP = data.get("ip");
     System.println(foundIP); //Print to console
     Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
+
+    var url = "https://remootio-server.glitch.me/set-ip";
+    var params = {
+      "IP" => Application.Storage.getValue("homeIP")
+    };
+    var options = { // set the options
+    :method => Communications.HTTP_REQUEST_METHOD_POST,
+    :headers => 
+    {
+      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+    };
+    var responseCallback = method(:onReceive);
+    Communications.makeWebRequest(url, params, options, responseCallback);
   }
   
   //Check IP address
@@ -109,5 +119,10 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     };
     var responseCallback = method(:setIP);
     Communications.makeWebRequest(url, params, options, method(:setIP));
+  }
+
+  function switchDoor()
+  {
+    door.switchDoor();
   }
 }
