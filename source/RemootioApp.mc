@@ -5,6 +5,7 @@ using Toybox.Communications;
 class RemootioApp extends Application.AppBase 
 {
   hidden var view;
+  hidden var delegate;
 
   function initialize() 
   {
@@ -25,6 +26,7 @@ class RemootioApp extends Application.AppBase
   function getInitialView() 
   {
     view = new RemootioView();
-    return [view, new RemootioDelegate()];
+    delegate = new RemootioDelegate();
+    return [view, delegate];
   }
 }

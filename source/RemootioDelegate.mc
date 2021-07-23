@@ -8,16 +8,15 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   const API_AUTH = "";
   var foundIP = 0;
   var button;
-
   var door;
 
   function initialize()
   {
     WatchUi.BehaviorDelegate.initialize();
-
-    door = new RemootioDoor(0, 0);
+    door = new RemootioDoor(0, 0); //Create garage door that is closed
   }
   
+  //Callback function after web request
   function onReceive(responseCode, data)
   {
     if (responseCode == 200) 
@@ -29,16 +28,9 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     {
       System.println("Response: " + responseCode + " Data: " + data);
     }
-    //if(data["state"] != null)
-    //{
-    //	RemootioView.updateState(data);
-    //}
-    //else
-    //{
-    //	System.println("null data");
-    //}
   }
   
+  //Creates a hash based on a string and returns it
   function hashString(string)
   {
     var hash = null;
@@ -50,10 +42,9 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     }
     
     hash = new Cryptography.Hash({ :algorithm => Cryptography.HASH_SHA256 }); // Create a new SHA-256 hash
-    // Add the byte array to the hash
-      hash.update(newArray);
-      
-      return hash.digest().toString();
+    hash.update(newArray); // Add the byte array to the hash
+    
+    return hash.digest().toString();
   }
 
   function makeRequest() 
@@ -121,10 +112,5 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     };
     var responseCallback = method(:setIP);
     Communications.makeWebRequest(url, params, options, method(:setIP));
-  }
-
-  function switchDoor()
-  {
-    door.switchDoor();
   }
 }

@@ -4,12 +4,13 @@ using Toybox.Communications;
 
 class RemootioView extends WatchUi.View 
 {
-  var stateText;
-  var currentState = "Closed";
+  var stateText; //Variable to hold the text in the UI
+  var currentState = "Closed"; //Updated using call to the server
 
   //Function to update the state text based on the current state
   function updateStateText(data)
   {
+    //Convert state text to first letter uppercase
     currentState = data["state"].toCharArray();
     currentState[0] = currentState[0].toUpper();
     var state = "";
@@ -18,20 +19,21 @@ class RemootioView extends WatchUi.View
       state += currentState[i];
     }
     currentState = state;
-    WatchUi.requestUpdate();
+    WatchUi.requestUpdate(); //Request update for the UI
   }
   
-  function onReceive(responseCode, data) {
+  //Callback function for checking state of door
+  function onReceive(responseCode, data)
+  {
     if (responseCode == 200) 
     {
-      System.println("Layout State Request Successful");
-      System.println("Response: " + responseCode + " Data: " + data);  
+      updateStateText(data);
     }
     else 
     {
-      System.println("Response: " + responseCode + " Data: " + data);
+      currentState = "Unknown";
+      WatchUi.requestUpdate();
     }
-    updateStateText(data);
   }
   
   function checkState()
@@ -51,15 +53,14 @@ class RemootioView extends WatchUi.View
 
   function initialize() 
   {
-      WatchUi.View.initialize();
-      stateText = null;
+    WatchUi.View.initialize();
+    stateText = null;
   }
 
   // Load your resources here
   function onLayout(dc) 
   {
     setLayout(Rez.Layouts.MainLayout(dc));
-        
   }
 
   // Called when this View is brought to the foreground. Restore
@@ -86,10 +87,4 @@ class RemootioView extends WatchUi.View
   {
 
   }
-  
-  function onRecieve(args)
-  {
-    WatchUi.requestUpdate();
-  }
-
 }
