@@ -14,7 +14,6 @@ class RemootioApp extends Application.AppBase
   // onStart() is called on application start up
   function onStart(state) 
   {
-      
   }
 
   // onStop() is called when your application is exiting
@@ -28,5 +27,4 @@ class RemootioApp extends Application.AppBase
     view = new RemootioView();
     return [view, new RemootioDelegate()];
   }
-
 }

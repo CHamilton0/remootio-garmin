@@ -49,49 +49,47 @@ class RemootioView extends WatchUi.View
     Communications.makeWebRequest(url, params, options, method(:onReceive));
   }
 
-    function initialize() 
-    {
-        WatchUi.View.initialize();
-        stateText = null;
-    }
+  function initialize() 
+  {
+      WatchUi.View.initialize();
+      stateText = null;
+  }
 
+  // Load your resources here
+  function onLayout(dc) 
+  {
+    setLayout(Rez.Layouts.MainLayout(dc));
+        
+  }
 
-  var button;
-    // Load your resources here
-    function onLayout(dc) 
-    {
-      setLayout(Rez.Layouts.MainLayout(dc));
-         
-    }
+  // Called when this View is brought to the foreground. Restore
+  // the state of this View and prepare it to be shown. This includes
+  // loading resources into memory.
+  function onShow() 
+  {
+    checkState();
+    stateText = View.findDrawableById("state");   
+  }
 
-    // Called when this View is brought to the foreground. Restore
-    // the state of this View and prepare it to be shown. This includes
-    // loading resources into memory.
-    function onShow() 
-    {
-      checkState();
-      stateText = View.findDrawableById("state");   
-    }
+  // Update the view
+  function onUpdate(dc) 
+  {
+    stateText.setText(currentState);
+    // Call the parent onUpdate function to redraw the layout
+    View.onUpdate(dc);
+  }
 
-    // Update the view
-    function onUpdate(dc) 
-    {
-      stateText.setText(currentState);
-      // Call the parent onUpdate function to redraw the layout
-      View.onUpdate(dc);
-    }
+  // Called when this View is removed from the screen. Save the
+  // state of this View here. This includes freeing resources from
+  // memory.
+  function onHide() 
+  {
 
-    // Called when this View is removed from the screen. Save the
-    // state of this View here. This includes freeing resources from
-    // memory.
-    function onHide() 
-    {
-
-    }
-    
-    function onRecieve(args)
-    {
-      WatchUi.requestUpdate();
-    }
+  }
+  
+  function onRecieve(args)
+  {
+    WatchUi.requestUpdate();
+  }
 
 }

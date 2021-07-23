@@ -43,8 +43,6 @@ class RemootioAPI
     
     pingReplyTimeoutHandle = null;
     waitingForAuthenticationQueryActionResponse = false;
-    
-    
   }
 
   function connect(reconnect)
@@ -61,7 +59,6 @@ class RemootioAPI
     //send request to http server to connect to websocket
     //use websocket to connect to device IP
     //do websocket stuff on server side
-    
   }
   
   function disconnect()

@@ -18,7 +18,8 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     door = new RemootioDoor(0, 0);
   }
   
-  function onReceive(responseCode, data) {
+  function onReceive(responseCode, data)
+  {
     if (responseCode == 200) 
     {
       System.println("Next Request Successful");
@@ -80,7 +81,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
       //RemootioView.checkState();
       door.switchState();
     }
-        return true;
+    return true;
   }
   
   //Check the current IP address and save it in foundIP variable
@@ -91,7 +92,8 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
 
     var url = "https://remootio-server.glitch.me/set-ip";
-    var params = {
+    var params = 
+    {
       "IP" => Application.Storage.getValue("homeIP")
     };
     var options = { // set the options

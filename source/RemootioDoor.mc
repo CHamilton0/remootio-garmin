@@ -26,9 +26,10 @@ class RemootioDoor
     }
   }
 
-  function switchWebRequest(type) //Type is either switch (0) or activate (1)
+  //Type is either switch (0) or activate (1)
   //if type == switch, url should be /switch-from-selectedDoor
   //if type == activate, url should be /activate-selectedDoor
+  function switchWebRequest(type) 
   {
     var selectedDoor = _currentDoor ? "gate" : "garage";
     var url = type ? "https://remootio-server.glitch.me/activate-" + selectedDoor : "https://remootio-server.glitch.me/switch-from-" + selectedDoor;
