@@ -14,6 +14,7 @@ class RemootioDoor
     _currentState = state;
   }
 
+  //Callback function when data is recieved from web request
   function onReceive(responseCode, data)
   {
     if(responseCode == 200)
@@ -33,10 +34,9 @@ class RemootioDoor
   {
     var selectedDoor = _currentDoor ? "gate" : "garage";
     var url = type ? "https://remootio-server.glitch.me/activate-" + selectedDoor : "https://remootio-server.glitch.me/switch-from-" + selectedDoor;
-    System.println(url);
     //Send the hash of authentication and IP address
     var params = {
-      "Auth" => RemootioDelegate.hashString(API_AUTH),
+      "Auth" => hashString(API_AUTH),
       "IP" => Application.Storage.getValue("homeIP")
     };
     // set the options
@@ -51,18 +51,33 @@ class RemootioDoor
     Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
+  //Creates a hash based on a string and returns it
+  function hashString(string)
+  {
+    var hash = null;
+    var newArray = []b;
+    var chars = string.toCharArray();
+    for(var i = 0; i < chars.size(); i++)
+    {
+      newArray.add(chars[i]);
+    }
+    
+    hash = new Cryptography.Hash({ :algorithm => Cryptography.HASH_SHA256 }); // Create a new SHA-256 hash
+    hash.update(newArray); // Add the byte array to the hash
+    
+    return hash.digest().toString();
+  }
+
   function switchDoor()
   {
     switchWebRequest(0);
     _currentDoor = _currentDoor ? 0 : 1;
-    System.println(_currentDoor);
   }
 
   function switchState()
   {
     switchWebRequest(1);
     _currentState = _currentState ? 0 : 1;
-    System.println(_currentState);
   }
 
   function getDoor()

@@ -30,47 +30,14 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     }
   }
   
-  //Creates a hash based on a string and returns it
-  function hashString(string)
-  {
-    var hash = null;
-    var newArray = []b;
-    var chars = string.toCharArray();
-    for(var i = 0; i < chars.size(); i++)
-    {
-      newArray.add(chars[i]);
-    }
-    
-    hash = new Cryptography.Hash({ :algorithm => Cryptography.HASH_SHA256 }); // Create a new SHA-256 hash
-    hash.update(newArray); // Add the byte array to the hash
-    
-    return hash.digest().toString();
-  }
-
-  function makeRequest() 
-  {
-    var url = "https://remootio-server.glitch.me/test";
-    var params = {"Auth" => hashString(API_AUTH), "IP" => Application.Storage.getValue("homeIP")}; //Send the hash of authentication and IP address
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_POST,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-    };
-    var responseCallback = method(:onReceive);
-    Communications.makeWebRequest(url, params, options, method(:onReceive));
-  }
-  
   //Function for checking key press
   function onKey(keyEvent)
   {
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
       System.println("Start/stop button pressed");
-      //makeRequest();
-      //RemootioView.checkState();
       door.switchState();
+      //TODO check state here and update UI
     }
     return true;
   }
@@ -79,7 +46,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   function setIP(responseCode, data)
   {
     foundIP = data.get("ip");
-    System.println(foundIP); //Print to console
     Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
 
     var url = "https://remootio-server.glitch.me/set-ip";
@@ -98,7 +64,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     Communications.makeWebRequest(url, params, options, responseCallback);
   }
   
-  //Check IP address
+  //Check IP address currently connected to
   function checkIP()
   {
     var url = "https://api.ipify.org?format=json";
