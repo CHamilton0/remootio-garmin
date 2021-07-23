@@ -19,11 +19,9 @@ class RemootioDoor
   {
     if(responseCode == 200)
     {
-      System.println("Response: " + responseCode + " Data: " + data);
     }
     else
     {
-      System.println("Response: " + responseCode + " Data: " + data);
     }
   }
 

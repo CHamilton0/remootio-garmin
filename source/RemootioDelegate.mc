@@ -21,12 +21,9 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   {
     if (responseCode == 200) 
     {
-      System.println("Next Request Successful");
-      System.println("Response: " + responseCode + " Data: " + data);  
     }
     else 
     {
-      System.println("Response: " + responseCode + " Data: " + data);
     }
   }
   
@@ -35,7 +32,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   {
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
-      System.println("Start/stop button pressed");
       door.switchState();
       //TODO check state here and update UI
     }
@@ -78,5 +74,11 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     };
     var responseCallback = method(:setIP);
     Communications.makeWebRequest(url, params, options, method(:setIP));
+  }
+
+  //Switch door function required for the button to work
+  function switchDoor()
+  {
+    door.switchDoor();
   }
 }
