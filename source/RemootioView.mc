@@ -5,15 +5,19 @@ using Toybox.Communications;
 class RemootioView extends WatchUi.View 
 {
   var stateText;
-  
   var currentState = "Closed";
 
-
-  function updateState(data)
+  //Function to update the state text based on the current state
+  function updateStateText(data)
   {
-    currentState = data["state"];
-    //stateText = View.findDrawableById("state");   
-      //stateText.setText(currentState);
+    currentState = data["state"].toCharArray();
+    currentState[0] = currentState[0].toUpper();
+    var state = "";
+    for(var i = 0; i < currentState.size(); i++)
+    {
+      state += currentState[i];
+    }
+    currentState = state;
     WatchUi.requestUpdate();
   }
   
@@ -27,7 +31,7 @@ class RemootioView extends WatchUi.View
     {
       System.println("Response: " + responseCode + " Data: " + data);
     }
-    updateState(data);
+    updateStateText(data);
   }
   
   function checkState()
@@ -66,12 +70,12 @@ class RemootioView extends WatchUi.View
     function onShow() 
     {
       checkState();
+      stateText = View.findDrawableById("state");   
     }
 
     // Update the view
     function onUpdate(dc) 
     {
-      stateText = View.findDrawableById("state");   
       stateText.setText(currentState);
       // Call the parent onUpdate function to redraw the layout
       View.onUpdate(dc);
