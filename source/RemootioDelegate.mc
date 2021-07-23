@@ -42,6 +42,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   function setIP(responseCode, data)
   {
     foundIP = data.get("ip");
+    System.println(foundIP);
     Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
 
     var url = "https://remootio-server.glitch.me/set-ip";

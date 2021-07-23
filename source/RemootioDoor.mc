@@ -19,6 +19,7 @@ class RemootioDoor
   {
     if(responseCode == 200)
     {
+      RemootioView.checkState(); //Updates the text based on the state of the door
     }
     else
     {
