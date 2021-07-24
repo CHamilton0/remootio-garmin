@@ -4,6 +4,7 @@ class RemootioDoor
 {
   private var _currentDoor;
   private var _currentState;
+  private var _gotResponse;
   const API_AUTH = "";
 
   function initialize(door, state)
@@ -12,6 +13,7 @@ class RemootioDoor
     // State 0 is closed, 1 is open
     _currentDoor = door;
     _currentState = state;
+    _gotResponse = true;
   }
 
   //Callback function when data is recieved from web request
@@ -24,6 +26,7 @@ class RemootioDoor
     else
     {
     }
+    _gotResponse = true;
   }
 
   //Type is either switch (0) or activate (1)
@@ -69,14 +72,22 @@ class RemootioDoor
 
   function switchDoor()
   {
-    switchWebRequest(0);
-    _currentDoor = _currentDoor ? 0 : 1;
+    if (_gotResponse)
+    {
+      _gotResponse = false;
+      switchWebRequest(0);
+      _currentDoor = _currentDoor ? 0 : 1;
+    }
   }
 
   function switchState()
   {
-    switchWebRequest(1);
-    _currentState = _currentState ? 0 : 1;
+    if (_gotResponse)
+    {
+      _gotResponse = false;
+      switchWebRequest(1);
+      _currentState = _currentState ? 0 : 1;
+    }
   }
 
   function getDoor()
@@ -87,5 +98,15 @@ class RemootioDoor
   function getCurrentState()
   {
     return _currentState;
+  }
+
+  function getGotResponse()
+  {
+    return _gotResponse;
+  }
+
+  function setGotResponse(value)
+  {
+    _gotResponse = value;
   }
 }
