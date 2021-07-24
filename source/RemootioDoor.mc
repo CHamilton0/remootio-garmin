@@ -1,4 +1,5 @@
 using Toybox.Communications;
+using Toybox.WatchUi;
 
 class RemootioDoor
 {
@@ -19,7 +20,8 @@ class RemootioDoor
   {
     if(responseCode == 200)
     {
-      RemootioView.checkState(); //Updates the text based on the state of the door
+      _currentState = data["state"];
+      WatchUi.requestUpdate();
     }
     else
     {
@@ -70,13 +72,11 @@ class RemootioDoor
   function switchDoor()
   {
     switchWebRequest(0);
-    _currentDoor = _currentDoor ? 0 : 1;
   }
 
   function switchState()
   {
     switchWebRequest(1);
-    _currentState = _currentState ? 0 : 1;
   }
 
   function getDoor()

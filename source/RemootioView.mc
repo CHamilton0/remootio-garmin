@@ -6,61 +6,23 @@ class RemootioView extends WatchUi.View
 {
   var stateText; //Variable to hold the text in the UI
   var currentState = "Closed"; //Updated using call to the server
-
-  //Function to update the state text based on the current state
-  function updateStateText(data)
-  {
-    //Convert state text to first letter uppercase
-    currentState = data["state"].toCharArray();
-    currentState[0] = currentState[0].toUpper();
-    var state = "";
-    for(var i = 0; i < currentState.size(); i++)
-    {
-      state += currentState[i];
-    }
-    currentState = state;
-    WatchUi.requestUpdate(); //Request update for the UI
-  }
-  
-  //Callback function for checking state of door
-  function onReceive(responseCode, data)
-  {
-    if (responseCode == 200) 
-    {
-      updateStateText(data);
-    }
-    else 
-    {
-      currentState = "Unknown";
-      WatchUi.requestUpdate();
-    }
-  }
-  
-  function checkState()
-  {
-    var url = "https://remootio-server.glitch.me/state";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-    };
-    var responseCallback = method(:onReceive);
-    Communications.makeWebRequest(url, params, options, method(:onReceive));
-  }
+  var door;
+  var gotResponse;
 
   function initialize() 
   {
+    door = new RemootioDoor(0, 0);
     WatchUi.View.initialize();
     stateText = null;
+    gotResponse = false;
   }
 
   // Load your resources here
   function onLayout(dc) 
   {
     setLayout(Rez.Layouts.MainLayout(dc));
+    stateText = View.findDrawableById("state");
+    currentState = door.getCurrentState();
   }
 
   // Called when this View is brought to the foreground. Restore
@@ -68,14 +30,23 @@ class RemootioView extends WatchUi.View
   // loading resources into memory.
   function onShow() 
   {
-    checkState();
-    stateText = View.findDrawableById("state");   
+    WatchUi.requestUpdate();
   }
 
   // Update the view
   function onUpdate(dc) 
   {
-    stateText.setText(currentState);
+    updateState();
+    System.println(currentState);
+    if(currentState != 0)
+    {
+      gotResponse = true;
+      stateText.setText(currentState);
+    }
+    if(!gotResponse)
+    {
+      WatchUi.requestUpdate();
+    }
     // Call the parent onUpdate function to redraw the layout
     View.onUpdate(dc);
   }
@@ -86,5 +57,40 @@ class RemootioView extends WatchUi.View
   function onHide() 
   {
 
+  }
+
+  function onReceiveState(responseCode, data)
+  {
+    if(responseCode == 200)
+    {
+      //Convert state text to first letter uppercase
+      currentState = data["state"].toCharArray();
+      currentState[0] = currentState[0].toUpper();
+      var state = "";
+      for(var i = 0; i < currentState.size(); i++)
+      {
+        state += currentState[i];
+      }
+      currentState = state;
+    }
+    else
+    {
+      currentState = "Unknown";
+    }
+  }
+
+  function updateState()
+  {
+    var url = "https://remootio-server.glitch.me/state";
+    var params = {};
+    var options = { // set the options
+    :method => Communications.HTTP_REQUEST_METHOD_GET,
+    :headers => 
+    {
+      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+    };
+    var responseCallback = method(:onReceiveState);
+    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 }
