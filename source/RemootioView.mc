@@ -45,7 +45,6 @@ class RemootioView extends WatchUi.View
     :headers => 
     {
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
     };
     var responseCallback = method(:onReceive);
     Communications.makeWebRequest(url, params, options, method(:onReceive));
@@ -68,7 +67,7 @@ class RemootioView extends WatchUi.View
   // loading resources into memory.
   function onShow() 
   {
-    //checkState();
+    checkState();
     stateText = View.findDrawableById("state");   
   }
 

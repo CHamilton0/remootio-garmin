@@ -28,40 +28,40 @@
         <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioAPI.mc" id="13" lineNum="98" pc="268435641" symbol="sendRestart"/>
         <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioAPI.mc" id="14" lineNum="102" pc="268435646" symbol="sendFrame"/>
         <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioAPI.mc" id="15" lineNum="106" pc="268435651" symbol="sendUnencryptedPayload"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioAPI.mc" id="15" lineNum="11" pc="268438245" symbol="&lt;init&gt;"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioAPI.mc" id="15" lineNum="12" pc="268438265" symbol="&lt;init&gt;"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioAPI.mc" id="15" lineNum="13" pc="268438285" symbol="&lt;init&gt;"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="18" lineNum="14" pc="268435656" symbol="initialize"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="18" lineNum="16" pc="268435660" symbol="initialize"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="18" lineNum="17" pc="268435682" symbol="initialize"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="21" pc="268435723" symbol="onReceive"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="23" pc="268435727" symbol="onReceive"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="29" pc="268435741" symbol="onReceive"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="30" pc="268435774" symbol="onReceive"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="31" pc="268435784" symbol="onReceive"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="20" lineNum="35" pc="268435805" symbol="onKey"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="20" lineNum="37" pc="268435809" symbol="onKey"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="20" lineNum="39" pc="268435829" symbol="onKey"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="20" lineNum="42" pc="268435850" symbol="onKey"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="46" pc="268435854" symbol="setIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="48" pc="268435858" symbol="setIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="50" pc="268435869" symbol="setIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="51" pc="268435893" symbol="setIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="53" pc="268435930" symbol="setIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="54" pc="268435937" symbol="setIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="58" pc="268435981" symbol="setIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="65" pc="268436063" symbol="setIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="66" pc="268436081" symbol="setIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="71" pc="268436109" symbol="checkIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="73" pc="268436113" symbol="checkIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="75" pc="268436124" symbol="checkIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="76" pc="268436134" symbol="checkIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="77" pc="268436141" symbol="checkIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="78" pc="268436149" symbol="checkIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="85" pc="268436231" symbol="checkIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="86" pc="268436249" symbol="checkIP"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="23" lineNum="91" pc="268436291" symbol="switchDoor"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="23" lineNum="93" pc="268436295" symbol="switchDoor"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioAPI.mc" id="15" lineNum="11" pc="268438257" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioAPI.mc" id="15" lineNum="12" pc="268438277" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioAPI.mc" id="15" lineNum="13" pc="268438297" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="18" lineNum="13" pc="268435656" symbol="initialize"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="18" lineNum="15" pc="268435660" symbol="initialize"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="18" lineNum="16" pc="268435682" symbol="initialize"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="20" pc="268435723" symbol="onReceive"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="22" pc="268435727" symbol="onReceive"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="28" pc="268435741" symbol="onReceive"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="29" pc="268435774" symbol="onReceive"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="19" lineNum="30" pc="268435784" symbol="onReceive"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="20" lineNum="34" pc="268435805" symbol="onKey"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="20" lineNum="36" pc="268435809" symbol="onKey"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="20" lineNum="38" pc="268435829" symbol="onKey"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="20" lineNum="41" pc="268435850" symbol="onKey"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="45" pc="268435854" symbol="setIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="47" pc="268435858" symbol="setIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="49" pc="268435869" symbol="setIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="50" pc="268435893" symbol="setIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="52" pc="268435930" symbol="setIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="53" pc="268435937" symbol="setIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="57" pc="268435981" symbol="setIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="64" pc="268436063" symbol="setIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="21" lineNum="65" pc="268436081" symbol="setIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="70" pc="268436109" symbol="checkIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="72" pc="268436113" symbol="checkIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="74" pc="268436124" symbol="checkIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="75" pc="268436134" symbol="checkIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="76" pc="268436141" symbol="checkIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="77" pc="268436149" symbol="checkIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="84" pc="268436231" symbol="checkIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="22" lineNum="85" pc="268436249" symbol="checkIP"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="23" lineNum="90" pc="268436291" symbol="switchDoor"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDelegate.mc" id="23" lineNum="92" pc="268436295" symbol="switchDoor"/>
         <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="25" lineNum="11" pc="268436314" symbol="updateStateText"/>
         <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="25" lineNum="14" pc="268436318" symbol="updateStateText"/>
         <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="25" lineNum="15" pc="268436343" symbol="updateStateText"/>
@@ -87,67 +87,69 @@
         <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="29" lineNum="61" pc="268436729" symbol="onLayout"/>
         <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="29" lineNum="63" pc="268436733" symbol="onLayout"/>
         <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="30" lineNum="69" pc="268436771" symbol="onShow"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="30" lineNum="72" pc="268436775" symbol="onShow"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="31" lineNum="76" pc="268436806" symbol="onUpdate"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="31" lineNum="78" pc="268436810" symbol="onUpdate"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="31" lineNum="80" pc="268436836" symbol="onUpdate"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="32" lineNum="86" pc="268436857" symbol="onHide"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="34" lineNum="10" pc="268436862" symbol="initialize"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="34" lineNum="12" pc="268436866" symbol="initialize"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="35" lineNum="16" pc="268436885" symbol="onStart"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="36" lineNum="21" pc="268436890" symbol="onStop"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="37" lineNum="26" pc="268436895" symbol="getInitialView"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="37" lineNum="28" pc="268436899" symbol="getInitialView"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="37" lineNum="29" pc="268436929" symbol="getInitialView"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="37" lineNum="30" pc="268436959" symbol="getInitialView"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="39" lineNum="10" pc="268436999" symbol="initialize"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="39" lineNum="14" pc="268437003" symbol="initialize"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="39" lineNum="15" pc="268437013" symbol="initialize"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="39" lineNum="16" pc="268437023" symbol="initialize"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="40" lineNum="20" pc="268437034" symbol="onReceive"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="40" lineNum="22" pc="268437038" symbol="onReceive"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="40" lineNum="29" pc="268437052" symbol="onReceive"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="40" lineNum="30" pc="268437087" symbol="onReceive"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="36" pc="268437098" symbol="switchWebRequest"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="38" pc="268437102" symbol="switchWebRequest"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="39" pc="268437128" symbol="switchWebRequest"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="41" pc="268437154" symbol="switchWebRequest"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="46" pc="268437225" symbol="switchWebRequest"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="53" pc="268437307" symbol="switchWebRequest"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="54" pc="268437325" symbol="switchWebRequest"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="58" pc="268437350" symbol="hashString"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="60" pc="268437354" symbol="hashString"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="61" pc="268437357" symbol="hashString"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="62" pc="268437365" symbol="hashString"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="63" pc="268437378" symbol="hashString"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="65" pc="268437402" symbol="hashString"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="68" pc="268437432" symbol="hashString"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="69" pc="268437490" symbol="hashString"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="71" pc="268437504" symbol="hashString"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="74" pc="268437526" symbol="switchDoor"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="76" pc="268437530" symbol="switchDoor"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="78" pc="268437541" symbol="switchDoor"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="79" pc="268437551" symbol="switchDoor"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="80" pc="268437568" symbol="switchDoor"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="84" pc="268437604" symbol="switchState"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="86" pc="268437608" symbol="switchState"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="88" pc="268437619" symbol="switchState"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="89" pc="268437629" symbol="switchState"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="90" pc="268437646" symbol="switchState"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="45" lineNum="94" pc="268437682" symbol="getDoor"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="45" lineNum="96" pc="268437686" symbol="getDoor"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="46" lineNum="99" pc="268437696" symbol="getCurrentState"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="46" lineNum="101" pc="268437700" symbol="getCurrentState"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="47" lineNum="104" pc="268437710" symbol="getGotResponse"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="47" lineNum="106" pc="268437714" symbol="getGotResponse"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="48" lineNum="109" pc="268437724" symbol="setGotResponse"/>
-        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="48" lineNum="111" pc="268437728" symbol="setGotResponse"/>
-        <entry filename="Rez" id="54" lineNum="18" pc="268437739" symbol="MainLayout"/>
-        <entry filename="Rez" id="54" lineNum="20" pc="268437751" symbol="MainLayout"/>
-        <entry filename="Rez" id="54" lineNum="21" pc="268437863" symbol="MainLayout"/>
-        <entry filename="Rez" id="54" lineNum="22" pc="268437903" symbol="MainLayout"/>
-        <entry filename="Rez" id="54" lineNum="23" pc="268438042" symbol="MainLayout"/>
-        <entry filename="Rez" id="54" lineNum="25" pc="268438168" symbol="MainLayout"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="30" lineNum="71" pc="268436775" symbol="onShow"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="30" lineNum="72" pc="268436787" symbol="onShow"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="31" lineNum="76" pc="268436818" symbol="onUpdate"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="31" lineNum="78" pc="268436822" symbol="onUpdate"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="31" lineNum="80" pc="268436848" symbol="onUpdate"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioView.mc" id="32" lineNum="86" pc="268436869" symbol="onHide"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="34" lineNum="10" pc="268436874" symbol="initialize"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="34" lineNum="12" pc="268436878" symbol="initialize"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="35" lineNum="16" pc="268436897" symbol="onStart"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="36" lineNum="21" pc="268436902" symbol="onStop"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="37" lineNum="26" pc="268436907" symbol="getInitialView"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="37" lineNum="28" pc="268436911" symbol="getInitialView"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="37" lineNum="29" pc="268436941" symbol="getInitialView"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioApp.mc" id="37" lineNum="30" pc="268436971" symbol="getInitialView"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="39" lineNum="10" pc="268437011" symbol="initialize"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="39" lineNum="14" pc="268437015" symbol="initialize"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="39" lineNum="15" pc="268437025" symbol="initialize"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="39" lineNum="16" pc="268437035" symbol="initialize"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="40" lineNum="20" pc="268437046" symbol="onReceive"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="40" lineNum="22" pc="268437050" symbol="onReceive"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="40" lineNum="29" pc="268437064" symbol="onReceive"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="40" lineNum="30" pc="268437099" symbol="onReceive"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="36" pc="268437110" symbol="switchWebRequest"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="38" pc="268437114" symbol="switchWebRequest"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="39" pc="268437140" symbol="switchWebRequest"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="41" pc="268437166" symbol="switchWebRequest"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="46" pc="268437237" symbol="switchWebRequest"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="52" pc="268437299" symbol="switchWebRequest"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="53" pc="268437317" symbol="switchWebRequest"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="41" lineNum="54" pc="268437337" symbol="switchWebRequest"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="58" pc="268437362" symbol="hashString"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="60" pc="268437366" symbol="hashString"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="61" pc="268437369" symbol="hashString"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="62" pc="268437377" symbol="hashString"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="63" pc="268437390" symbol="hashString"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="65" pc="268437414" symbol="hashString"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="68" pc="268437444" symbol="hashString"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="69" pc="268437502" symbol="hashString"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="42" lineNum="71" pc="268437516" symbol="hashString"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="74" pc="268437538" symbol="switchDoor"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="76" pc="268437542" symbol="switchDoor"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="78" pc="268437553" symbol="switchDoor"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="79" pc="268437563" symbol="switchDoor"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="43" lineNum="80" pc="268437580" symbol="switchDoor"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="84" pc="268437616" symbol="switchState"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="86" pc="268437620" symbol="switchState"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="88" pc="268437631" symbol="switchState"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="89" pc="268437641" symbol="switchState"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="44" lineNum="90" pc="268437658" symbol="switchState"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="45" lineNum="94" pc="268437694" symbol="getDoor"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="45" lineNum="96" pc="268437698" symbol="getDoor"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="46" lineNum="99" pc="268437708" symbol="getCurrentState"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="46" lineNum="101" pc="268437712" symbol="getCurrentState"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="47" lineNum="104" pc="268437722" symbol="getGotResponse"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="47" lineNum="106" pc="268437726" symbol="getGotResponse"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="48" lineNum="109" pc="268437736" symbol="setGotResponse"/>
+        <entry filename="D:\\Dev\\Eclipse\\Remootio\\source\\RemootioDoor.mc" id="48" lineNum="111" pc="268437740" symbol="setGotResponse"/>
+        <entry filename="Rez" id="54" lineNum="18" pc="268437751" symbol="MainLayout"/>
+        <entry filename="Rez" id="54" lineNum="20" pc="268437763" symbol="MainLayout"/>
+        <entry filename="Rez" id="54" lineNum="21" pc="268437875" symbol="MainLayout"/>
+        <entry filename="Rez" id="54" lineNum="22" pc="268437915" symbol="MainLayout"/>
+        <entry filename="Rez" id="54" lineNum="23" pc="268438054" symbol="MainLayout"/>
+        <entry filename="Rez" id="54" lineNum="25" pc="268438180" symbol="MainLayout"/>
     </pcToLineNum>
     <symbolTable>
         <entry id="8388639" module="true" symbol="Graphics"/>
@@ -159,21 +161,21 @@
         <entry id="43" method="true" symbol="sendUnencryptedPayload"/>
         <entry field="true" id="8391333" symbol="delegate"/>
         <entry id="5" module="true" symbol="globals/Rez/Menus"/>
-        <entry field="true" id="48" symbol="door"/>
-        <entry id="60" method="true" symbol="MainLayout"/>
+        <entry field="true" id="47" symbol="door"/>
+        <entry id="59" method="true" symbol="MainLayout"/>
         <entry field="true" id="24" symbol="autoReconnect"/>
         <entry field="true" id="29" symbol="pingReplyTimeoutXMs"/>
         <entry id="8390501" module="true" symbol="Cryptography"/>
-        <entry field="true" id="49" symbol="gotIPResponse"/>
-        <entry id="52" method="true" symbol="checkIP"/>
+        <entry field="true" id="48" symbol="gotIPResponse"/>
+        <entry id="51" method="true" symbol="checkIP"/>
         <entry id="8390520" symbol="algorithm"/>
-        <entry field="true" id="63" symbol="&lt;globals/RemootioDoor/&lt;&gt;_currentState&gt;"/>
+        <entry field="true" id="62" symbol="&lt;globals/RemootioDoor/&lt;&gt;_currentState&gt;"/>
         <entry id="8388924" module="true" symbol="Gregorian"/>
         <entry field="true" id="8389103" symbol="behavior"/>
         <entry field="true" id="8388611" module="true" symbol="Toybox"/>
         <entry id="66" method="true" symbol="hashString"/>
         <entry field="true" id="28" symbol="sendPingMessageIntervalHandle"/>
-        <entry field="true" id="61" symbol="AppName"/>
+        <entry field="true" id="60" symbol="AppName"/>
         <entry id="68" method="true" symbol="getDoor"/>
         <entry field="true" id="23" symbol="sendPingMessageEveryXMs"/>
         <entry id="9" module="true" symbol="globals/Rez/Strings"/>
@@ -181,20 +183,20 @@
         <entry id="8388772" module="true" object="true" symbol="Fonts"/>
         <entry id="8389345" symbol="rezId"/>
         <entry id="69" method="true" symbol="getCurrentState"/>
-        <entry field="true" id="47" symbol="button"/>
+        <entry field="true" id="46" symbol="button"/>
         <entry id="8388648" module="true" symbol="WatchUi"/>
         <entry field="true" id="31" symbol="waitingForAuthenticationQueryActionResponse"/>
         <entry id="2" module="true" symbol="globals/Env"/>
         <entry id="3" module="true" symbol="globals/Rez"/>
-        <entry field="true" id="56" symbol="Monkey"/>
-        <entry field="true" id="64" symbol="&lt;globals/RemootioDoor/&lt;&gt;_gotResponse&gt;"/>
+        <entry field="true" id="55" symbol="Monkey"/>
+        <entry field="true" id="63" symbol="&lt;globals/RemootioDoor/&lt;&gt;_gotResponse&gt;"/>
         <entry id="8389124" method="true" symbol="onUpdate"/>
         <entry field="true" id="8389065" symbol="locY"/>
         <entry field="true" id="8389064" symbol="locX"/>
         <entry id="8388771" module="true" object="true" symbol="Drawables"/>
         <entry id="8389348" symbol="font"/>
         <entry field="true" id="8389067" symbol="height"/>
-        <entry id="55" module="true" symbol="Menus"/>
+        <entry id="54" module="true" symbol="Menus"/>
         <entry id="7" module="true" symbol="globals/Rez/Layouts"/>
         <entry id="32" method="true" symbol="connect"/>
         <entry field="true" id="18" symbol="RemootioAPISecret"/>
@@ -223,42 +225,42 @@
         <entry field="true" id="8389897" symbol="stateDefault"/>
         <entry id="11" module="true" symbol="Env"/>
         <entry id="67" method="true" symbol="switchState"/>
-        <entry field="true" id="46" symbol="foundIP"/>
+        <entry field="true" id="45" symbol="foundIP"/>
         <entry id="8388645" module="true" symbol="Time"/>
         <entry id="8388769" module="true" object="true" symbol="Rez"/>
-        <entry id="50" method="true" symbol="onReceive"/>
+        <entry id="49" method="true" symbol="onReceive"/>
         <entry id="8388640" module="true" symbol="Lang"/>
         <entry field="true" id="20" symbol="apiSessionKey"/>
         <entry id="8390088" module="true" object="true" symbol="JsonData"/>
         <entry id="65" method="true" symbol="switchWebRequest"/>
         <entry id="39" method="true" symbol="sendOpen"/>
-        <entry field="true" id="59" symbol="LauncherIcon"/>
+        <entry field="true" id="58" symbol="LauncherIcon"/>
         <entry id="8388610" symbol="statics"/>
         <entry id="8389123" method="true" symbol="onShow"/>
-        <entry field="true" id="58" symbol="icon"/>
+        <entry field="true" id="57" symbol="icon"/>
         <entry id="10" object="true" symbol="RemootioAPI"/>
         <entry id="8389350" module="true" symbol="globals"/>
         <entry field="true" id="16" symbol="RemootioIP"/>
         <entry id="8388770" module="true" object="true" symbol="Strings"/>
         <entry id="8388702" method="true" symbol="initialize"/>
-        <entry id="53" method="true" symbol="switchDoor"/>
+        <entry id="52" method="true" symbol="switchDoor"/>
         <entry id="34" method="true" symbol="authenticate"/>
         <entry id="8389279" method="true" symbol="onStart"/>
         <entry field="true" id="44" symbol="view"/>
         <entry field="true" id="72" symbol="stateText"/>
         <entry id="15" object="true" symbol="RemootioDoor"/>
-        <entry field="true" id="62" symbol="&lt;globals/RemootioDoor/&lt;&gt;_currentDoor&gt;"/>
+        <entry field="true" id="61" symbol="&lt;globals/RemootioDoor/&lt;&gt;_currentDoor&gt;"/>
         <entry field="true" id="17" symbol="RemootioAPIAuth"/>
         <entry id="8389280" method="true" symbol="getInitialView"/>
         <entry id="8389281" method="true" symbol="onStop"/>
         <entry id="71" method="true" symbol="setGotResponse"/>
         <entry id="40" method="true" symbol="sendClose"/>
         <entry id="8389097" method="true" symbol="onKey"/>
-        <entry field="true" id="57" symbol="Remootio"/>
+        <entry field="true" id="56" symbol="Remootio"/>
         <entry field="true" id="19" symbol="isAuthenticated"/>
-        <entry id="51" method="true" symbol="setIP"/>
+        <entry id="50" method="true" symbol="setIP"/>
         <entry field="true" id="21" symbol="websocketClient"/>
-        <entry id="54" module="true" symbol="Layouts"/>
+        <entry id="53" module="true" symbol="Layouts"/>
         <entry id="35" method="true" symbol="sendPing"/>
         <entry id="33" method="true" symbol="disconnect"/>
         <entry id="6" module="true" symbol="globals/Rez/Fonts"/>
@@ -268,7 +270,7 @@
         <entry id="42" method="true" symbol="sendFrame"/>
         <entry id="8389125" method="true" symbol="onHide"/>
         <entry id="8388635" module="true" symbol="Application"/>
-        <entry field="true" id="45" symbol="API_AUTH"/>
+        <entry field="true" id="64" symbol="API_AUTH"/>
     </symbolTable>
     <localVars>
         <entry arg="true" endPc="268435601" name="reconnect" stackId="1" startPc="268435548"/>
@@ -296,29 +298,29 @@
         <entry endPc="268436692" name="responseCallback" stackId="4" startPc="268436539"/>
         <entry endPc="268436692" name="params" stackId="2" startPc="268436539"/>
         <entry arg="true" endPc="268436771" name="dc" stackId="1" startPc="268436729"/>
-        <entry arg="true" endPc="268436857" name="dc" stackId="1" startPc="268436806"/>
-        <entry arg="true" endPc="268436890" name="state" stackId="1" startPc="268436885"/>
-        <entry arg="true" endPc="268436895" name="state" stackId="1" startPc="268436890"/>
-        <entry arg="true" endPc="268437034" name="door" stackId="1" startPc="268436999"/>
-        <entry arg="true" endPc="268437034" name="state" stackId="2" startPc="268436999"/>
-        <entry arg="true" endPc="268437098" name="responseCode" stackId="1" startPc="268437034"/>
-        <entry arg="true" endPc="268437098" name="data" stackId="2" startPc="268437034"/>
-        <entry endPc="268437349" name="selectedDoor" stackId="2" startPc="268437102"/>
-        <entry endPc="268437349" name="options" stackId="5" startPc="268437102"/>
-        <entry endPc="268437349" name="url" stackId="3" startPc="268437102"/>
-        <entry endPc="268437349" name="responseCallback" stackId="6" startPc="268437102"/>
-        <entry endPc="268437349" name="params" stackId="4" startPc="268437102"/>
-        <entry arg="true" endPc="268437350" name="type" stackId="1" startPc="268437098"/>
-        <entry endPc="268437432" name="i" stackId="5" startPc="268437402"/>
-        <entry endPc="268437525" name="newArray" stackId="3" startPc="268437354"/>
-        <entry endPc="268437525" name="chars" stackId="4" startPc="268437354"/>
-        <entry endPc="268437525" name="hash" stackId="2" startPc="268437354"/>
-        <entry arg="true" endPc="268437526" name="string" stackId="1" startPc="268437350"/>
-        <entry arg="true" endPc="268437739" name="value" stackId="1" startPc="268437724"/>
-        <entry endPc="268438205" name="rez_cmp_local_text_state" stackId="4" startPc="268437751"/>
-        <entry endPc="268438205" name="rez_cmp_local_custom_selectable_17040840501054982559" stackId="3" startPc="268437751"/>
-        <entry endPc="268438205" name="rez_cmp_local_bitmap_icon" stackId="2" startPc="268437751"/>
-        <entry arg="true" endPc="268438206" name="dc" stackId="1" startPc="268437739"/>
+        <entry arg="true" endPc="268436869" name="dc" stackId="1" startPc="268436818"/>
+        <entry arg="true" endPc="268436902" name="state" stackId="1" startPc="268436897"/>
+        <entry arg="true" endPc="268436907" name="state" stackId="1" startPc="268436902"/>
+        <entry arg="true" endPc="268437046" name="door" stackId="1" startPc="268437011"/>
+        <entry arg="true" endPc="268437046" name="state" stackId="2" startPc="268437011"/>
+        <entry arg="true" endPc="268437110" name="responseCode" stackId="1" startPc="268437046"/>
+        <entry arg="true" endPc="268437110" name="data" stackId="2" startPc="268437046"/>
+        <entry endPc="268437361" name="selectedDoor" stackId="2" startPc="268437114"/>
+        <entry endPc="268437361" name="options" stackId="5" startPc="268437114"/>
+        <entry endPc="268437361" name="url" stackId="3" startPc="268437114"/>
+        <entry endPc="268437361" name="responseCallback" stackId="6" startPc="268437114"/>
+        <entry endPc="268437361" name="params" stackId="4" startPc="268437114"/>
+        <entry arg="true" endPc="268437362" name="type" stackId="1" startPc="268437110"/>
+        <entry endPc="268437444" name="i" stackId="5" startPc="268437414"/>
+        <entry endPc="268437537" name="newArray" stackId="3" startPc="268437366"/>
+        <entry endPc="268437537" name="chars" stackId="4" startPc="268437366"/>
+        <entry endPc="268437537" name="hash" stackId="2" startPc="268437366"/>
+        <entry arg="true" endPc="268437538" name="string" stackId="1" startPc="268437362"/>
+        <entry arg="true" endPc="268437751" name="value" stackId="1" startPc="268437736"/>
+        <entry endPc="268438217" name="rez_cmp_local_text_state" stackId="4" startPc="268437763"/>
+        <entry endPc="268438217" name="rez_cmp_local_custom_selectable_11739163805208724551" stackId="3" startPc="268437763"/>
+        <entry endPc="268438217" name="rez_cmp_local_bitmap_icon" stackId="2" startPc="268437763"/>
+        <entry arg="true" endPc="268438218" name="dc" stackId="1" startPc="268437751"/>
     </localVars>
     <annotations/>
     <dataEntryOffsetMappings>
@@ -327,15 +329,15 @@
         <dataEntry offset="469" parentId="globals" symbolId="Env" type="module"/>
         <dataEntry offset="524" parentId="globals" symbolId="RemootioApp" type="class"/>
         <dataEntry offset="611" parentId="globals" symbolId="RemootioDelegate" type="class"/>
-        <dataEntry offset="738" parentId="globals" symbolId="Rez" type="module"/>
-        <dataEntry offset="817" parentId="Rez" symbolId="Drawables" type="module"/>
-        <dataEntry offset="880" parentId="Rez" symbolId="Menus" type="module"/>
-        <dataEntry offset="911" parentId="Rez" symbolId="Fonts" type="module"/>
-        <dataEntry offset="942" parentId="Rez" symbolId="Layouts" type="module"/>
-        <dataEntry offset="981" parentId="Rez" symbolId="JsonData" type="module"/>
-        <dataEntry offset="1012" parentId="Rez" symbolId="Strings" type="module"/>
-        <dataEntry offset="1051" parentId="globals" symbolId="RemootioDoor" type="class"/>
-        <dataEntry offset="1202" parentId="globals" symbolId="RemootioView" type="class"/>
+        <dataEntry offset="730" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry offset="809" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry offset="872" parentId="Rez" symbolId="Menus" type="module"/>
+        <dataEntry offset="903" parentId="Rez" symbolId="Fonts" type="module"/>
+        <dataEntry offset="934" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry offset="973" parentId="Rez" symbolId="JsonData" type="module"/>
+        <dataEntry offset="1004" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry offset="1043" parentId="globals" symbolId="RemootioDoor" type="class"/>
+        <dataEntry offset="1194" parentId="globals" symbolId="RemootioView" type="class"/>
     </dataEntryOffsetMappings>
     <functions>
         <functionEntry accessMode="public" name="initialize" parent="RemootioAPI">

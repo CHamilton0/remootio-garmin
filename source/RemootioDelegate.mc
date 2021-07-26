@@ -5,7 +5,6 @@ using Toybox.Cryptography;
 
 class RemootioDelegate extends WatchUi.BehaviorDelegate
 {
-  const API_AUTH = "";
   var foundIP = 0;
   var button;
   var door;
@@ -60,7 +59,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
       :headers => 
       {
         "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-        :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
       };
       var responseCallback = method(:onReceive);
       Communications.makeWebRequest(url, params, options, responseCallback);
@@ -80,7 +78,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
       :headers => 
       {
         "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-        :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
       };
       var responseCallback = method(:setIP);
       Communications.makeWebRequest(url, params, options, method(:setIP));

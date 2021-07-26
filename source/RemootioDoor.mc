@@ -48,9 +48,9 @@ class RemootioDoor
     :headers => 
     {
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
     };
     var responseCallback = method(:onReceive);
+    System.println(url);
     Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
