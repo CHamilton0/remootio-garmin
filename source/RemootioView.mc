@@ -68,7 +68,7 @@ class RemootioView extends WatchUi.View
   // loading resources into memory.
   function onShow() 
   {
-    checkState();
+    //checkState();
     stateText = View.findDrawableById("state");   
   }
 

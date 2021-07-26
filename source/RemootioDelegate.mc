@@ -26,6 +26,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     else 
     {
     }
+    System.println("Code: " + responseCode + " Data: " + data);
     gotIPResponse = true;
     door.setGotResponse(true);
   }
