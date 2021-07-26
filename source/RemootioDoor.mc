@@ -6,7 +6,7 @@ class RemootioDoor
   private var _currentDoor;
   private var _currentState;
   private var _gotResponse;
-  const API_AUTH = Env.API_AUTH;
+  const API_AUTH = Env.RemootioAPIAuth;
 
   function initialize(door, state)
   {
