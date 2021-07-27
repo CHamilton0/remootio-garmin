@@ -19,7 +19,6 @@ class RemootioView extends WatchUi.View
       state += currentState[i];
     }
     currentState = state;
-    WatchUi.requestUpdate(); //Request update for the UI
   }
   
   //Callback function for checking state of door

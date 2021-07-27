@@ -1,5 +1,6 @@
 using Toybox.Communications;
 using Env;
+using Toybox.Cryptography;
 
 class RemootioDoor
 {

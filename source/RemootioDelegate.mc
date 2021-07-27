@@ -1,7 +1,6 @@
 using Toybox.Communications;
 using Toybox.WatchUi;
 using Toybox.System;
-using Toybox.Cryptography;
 
 class RemootioDelegate extends WatchUi.BehaviorDelegate
 {
@@ -88,5 +87,10 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   function switchDoor()
   {
     door.switchDoor();
+  }
+
+  function checkState()
+  {
+    RemootioView.checkState();
   }
 }
