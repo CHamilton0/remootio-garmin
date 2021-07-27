@@ -1,2 +1,6 @@
 bin/Remootio.prg
 bin/Remootio.prg.debug.xml
+source/Env.mc
+builds/Remootio.prg
+.gitignore
+builds/Remootio.prg.debug.xml

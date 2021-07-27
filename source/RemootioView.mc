@@ -9,6 +9,48 @@ class RemootioView extends WatchUi.View
   var door;
   var gotResponse;
 
+  //Function to update the state text based on the current state
+  function updateStateText(data)
+  {
+    //Convert state text to first letter uppercase
+    currentState = data["state"].toCharArray();
+    currentState[0] = currentState[0].toUpper();
+    var state = "";
+    for(var i = 0; i < currentState.size(); i++)
+    {
+      state += currentState[i];
+    }
+    currentState = state;
+  }
+  
+  //Callback function for checking state of door
+  function onReceive(responseCode, data)
+  {
+    if (responseCode == 200) 
+    {
+      updateStateText(data);
+    }
+    else 
+    {
+      currentState = "Unknown";
+      WatchUi.requestUpdate();
+    }
+  }
+  
+  function checkState()
+  {
+    var url = "https://remootio-server.glitch.me/state";
+    var params = {};
+    var options = { // set the options
+    :method => Communications.HTTP_REQUEST_METHOD_GET,
+    :headers => 
+    {
+      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+    };
+    var responseCallback = method(:onReceive);
+    Communications.makeWebRequest(url, params, options, method(:onReceive));
+  }
+
   function initialize() 
   {
     door = new RemootioDoor(0, 0);

@@ -1,11 +1,14 @@
 using Toybox.Communications;
 using Toybox.WatchUi;
+using Env;
+using Toybox.Cryptography;
 
 class RemootioDoor
 {
   private var _currentDoor;
   private var _currentState;
-  const API_AUTH = "";
+  private var _gotResponse;
+  const API_AUTH = Env.RemootioAPIAuth;
 
   function initialize(door, state)
   {
@@ -13,6 +16,7 @@ class RemootioDoor
     // State 0 is closed, 1 is open
     _currentDoor = door;
     _currentState = state;
+    _gotResponse = true;
   }
 
   //Callback function when data is recieved from web request
@@ -20,12 +24,13 @@ class RemootioDoor
   {
     if(responseCode == 200)
     {
-      _currentState = data["state"];
-      WatchUi.requestUpdate();
+      //RemootioView.checkState(); //Updates the text based on the state of the door
     }
     else
     {
     }
+    System.println("Code: " + responseCode + " Data: " + data);
+    _gotResponse = true;
   }
 
   //Type is either switch (0) or activate (1)
@@ -46,9 +51,9 @@ class RemootioDoor
     :headers => 
     {
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
     };
     var responseCallback = method(:onReceive);
+    System.println(url);
     Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
@@ -71,12 +76,22 @@ class RemootioDoor
 
   function switchDoor()
   {
-    switchWebRequest(0);
+    if (_gotResponse)
+    {
+      _gotResponse = false;
+      switchWebRequest(0);
+      _currentDoor = _currentDoor ? 0 : 1;
+    }
   }
 
   function switchState()
   {
-    switchWebRequest(1);
+    if (_gotResponse)
+    {
+      _gotResponse = false;
+      switchWebRequest(1);
+      _currentState = _currentState ? 0 : 1;
+    }
   }
 
   function getDoor()
@@ -87,5 +102,15 @@ class RemootioDoor
   function getCurrentState()
   {
     return _currentState;
+  }
+
+  function getGotResponse()
+  {
+    return _gotResponse;
+  }
+
+  function setGotResponse(value)
+  {
+    _gotResponse = value;
   }
 }

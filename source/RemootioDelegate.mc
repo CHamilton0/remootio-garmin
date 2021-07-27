@@ -1,14 +1,13 @@
 using Toybox.Communications;
 using Toybox.WatchUi;
 using Toybox.System;
-using Toybox.Cryptography;
 
 class RemootioDelegate extends WatchUi.BehaviorDelegate
 {
-  const API_AUTH = "";
   var foundIP = 0;
   var button;
   var door;
+  var gotIPResponse = true;
 
   function initialize()
   {
@@ -25,6 +24,9 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     else 
     {
     }
+    System.println("Code: " + responseCode + " Data: " + data);
+    gotIPResponse = true;
+    door.setGotResponse(true);
   }
   
   //Function for checking key press
@@ -41,45 +43,54 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   //Check the current IP address and save it in foundIP variable
   function setIP(responseCode, data)
   {
-    foundIP = data.get("ip");
-    System.println(foundIP);
-    Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
+    if (responseCode == 200)
+    {
+      foundIP = data.get("ip");
+      Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
 
-    var url = "https://remootio-server.glitch.me/set-ip";
-    var params = 
-    {
-      "IP" => Application.Storage.getValue("homeIP")
-    };
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_POST,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-    };
-    var responseCallback = method(:onReceive);
-    Communications.makeWebRequest(url, params, options, responseCallback);
+      var url = "https://remootio-server.glitch.me/set-ip";
+      var params = 
+      {
+        "IP" => Application.Storage.getValue("homeIP")
+      };
+      var options = { // set the options
+      :method => Communications.HTTP_REQUEST_METHOD_POST,
+      :headers => 
+      {
+        "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+      };
+      var responseCallback = method(:onReceive);
+      Communications.makeWebRequest(url, params, options, responseCallback);
+    }
   }
   
   //Check IP address currently connected to
   function checkIP()
   {
-    var url = "https://api.ipify.org?format=json";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
+    if(gotIPResponse)
     {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-    };
-    var responseCallback = method(:setIP);
-    Communications.makeWebRequest(url, params, options, method(:setIP));
+      gotIPResponse = false;
+      var url = "https://api.ipify.org?format=json";
+      var params = {};
+      var options = { // set the options
+      :method => Communications.HTTP_REQUEST_METHOD_GET,
+      :headers => 
+      {
+        "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+      };
+      var responseCallback = method(:setIP);
+      Communications.makeWebRequest(url, params, options, method(:setIP));
+    }
   }
 
   //Switch door function required for the button to work
   function switchDoor()
   {
     door.switchDoor();
+  }
+
+  function checkState()
+  {
+    RemootioView.checkState();
   }
 }
