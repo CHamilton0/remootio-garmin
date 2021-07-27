@@ -78,7 +78,6 @@ class RemootioView extends WatchUi.View
   // Update the view
   function onUpdate(dc) 
   {
-    updateState();
     System.println(currentState);
     if(currentState != 0)
     {
