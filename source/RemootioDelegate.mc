@@ -91,6 +91,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
 
   function checkState()
   {
-    RemootioView.checkState();
+    WatchUi.requestUpdate();
   }
 }

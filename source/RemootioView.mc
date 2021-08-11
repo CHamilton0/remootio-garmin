@@ -6,8 +6,6 @@ class RemootioView extends WatchUi.View
 {
   var stateText; //Variable to hold the text in the UI
   var currentState = "Closed"; //Updated using call to the server
-  var door;
-  var gotResponse;
 
   //Function to update the state text based on the current state
   function updateStateText(data)
@@ -21,6 +19,7 @@ class RemootioView extends WatchUi.View
       state += currentState[i];
     }
     currentState = state;
+    System.println(currentState);
   }
   
   //Callback function for checking state of door
@@ -33,7 +32,6 @@ class RemootioView extends WatchUi.View
     else 
     {
       currentState = "Unknown";
-      WatchUi.requestUpdate();
     }
   }
   
@@ -48,23 +46,19 @@ class RemootioView extends WatchUi.View
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
     };
     var responseCallback = method(:onReceive);
-    Communications.makeWebRequest(url, params, options, method(:onReceive));
+    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
   function initialize() 
   {
-    door = new RemootioDoor(0, 0);
     WatchUi.View.initialize();
     stateText = null;
-    gotResponse = false;
   }
 
   // Load your resources here
   function onLayout(dc) 
   {
     setLayout(Rez.Layouts.MainLayout(dc));
-    stateText = View.findDrawableById("state");
-    currentState = door.getCurrentState();
   }
 
   // Called when this View is brought to the foreground. Restore
@@ -72,22 +66,15 @@ class RemootioView extends WatchUi.View
   // loading resources into memory.
   function onShow() 
   {
-    WatchUi.requestUpdate();
+    checkState();
+    stateText = View.findDrawableById("state");   
   }
 
   // Update the view
   function onUpdate(dc) 
   {
-    System.println(currentState);
-    if(currentState != 0)
-    {
-      gotResponse = true;
-      stateText.setText(currentState);
-    }
-    if(!gotResponse)
-    {
-      WatchUi.requestUpdate();
-    }
+    checkState();
+    stateText.setText(currentState);
     // Call the parent onUpdate function to redraw the layout
     View.onUpdate(dc);
   }
@@ -98,40 +85,5 @@ class RemootioView extends WatchUi.View
   function onHide() 
   {
 
-  }
-
-  function onReceiveState(responseCode, data)
-  {
-    if(responseCode == 200)
-    {
-      //Convert state text to first letter uppercase
-      currentState = data["state"].toCharArray();
-      currentState[0] = currentState[0].toUpper();
-      var state = "";
-      for(var i = 0; i < currentState.size(); i++)
-      {
-        state += currentState[i];
-      }
-      currentState = state;
-    }
-    else
-    {
-      currentState = "Unknown";
-    }
-  }
-
-  function updateState()
-  {
-    var url = "https://remootio-server.glitch.me/state";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-    };
-    var responseCallback = method(:onReceiveState);
-    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 }
