@@ -107,11 +107,8 @@ class RemootioDoor
 
   function switchState()
   {
-    if (_gotResponse)
-    {
-      _gotResponse = false;
-      switchWebRequest(1);
-    }
+    _gotResponse = false;
+    switchWebRequest(1);
   }
 
   function getDoor()
