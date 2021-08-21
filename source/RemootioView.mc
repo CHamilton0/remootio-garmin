@@ -4,8 +4,8 @@ using Toybox.Communications;
 
 class RemootioView extends WatchUi.View 
 {
-  var stateText; //Variable to hold the text in the UI
-  var currentState = "Closed"; //Updated using call to the server
+  var stateText; //Variable to hold the object in the UI
+  var currentState = "Unknown"; //Updated using call to the server
 
   //Function to update the state text based on the current state
   function updateStateText(data)
@@ -34,20 +34,6 @@ class RemootioView extends WatchUi.View
       currentState = "Unknown";
     }
   }
-  
-  function checkState()
-  {
-    var url = "https://remootio-server.glitch.me/state";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-    };
-    var responseCallback = method(:onReceive);
-    Communications.makeWebRequest(url, params, options, responseCallback);
-  }
 
   function initialize() 
   {
@@ -66,17 +52,30 @@ class RemootioView extends WatchUi.View
   // loading resources into memory.
   function onShow() 
   {
-    checkState();
+    var url = "https://remootio-server.glitch.me/connect";
+    var params = {};
+    var options = { // set the options
+    :method => Communications.HTTP_REQUEST_METHOD_GET,
+    :headers => 
+    {
+      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+    };
+    var responseCallback = method(:doNothing);
+    Communications.makeWebRequest(url, params, options, responseCallback);
     stateText = View.findDrawableById("state");   
   }
 
   // Update the view
   function onUpdate(dc) 
   {
-    checkState();
-    stateText.setText(currentState);
+    stateText.setText(door.getCurrentState());
     // Call the parent onUpdate function to redraw the layout
     View.onUpdate(dc);
+  }
+
+  function doNothing()
+  {
+
   }
 
   // Called when this View is removed from the screen. Save the
@@ -84,6 +83,15 @@ class RemootioView extends WatchUi.View
   // memory.
   function onHide() 
   {
-
+    var url = "https://remootio-server.glitch.me/dc";
+    var params = {};
+    var options = { // set the options
+    :method => Communications.HTTP_REQUEST_METHOD_GET,
+    :headers => 
+    {
+      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+    };
+    var responseCallback = method(:doNothing);
+    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 }

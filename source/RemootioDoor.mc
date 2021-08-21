@@ -33,6 +33,12 @@ class RemootioDoor
     _gotResponse = true;
   }
 
+  function setDoorState(responseCode, data)
+  {
+    System.println(data["state"]);
+    _currentState = data["state"];
+  }
+
   //Type is either switch (0) or activate (1)
   //if type == switch, url should be /switch-from-selectedDoor
   //if type == activate, url should be /activate-selectedDoor
@@ -90,7 +96,6 @@ class RemootioDoor
     {
       _gotResponse = false;
       switchWebRequest(1);
-      _currentState = _currentState ? 0 : 1;
     }
   }
 

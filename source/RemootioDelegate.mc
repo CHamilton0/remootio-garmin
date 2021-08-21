@@ -1,29 +1,23 @@
 using Toybox.Communications;
 using Toybox.WatchUi;
 using Toybox.System;
-
+var door;
 class RemootioDelegate extends WatchUi.BehaviorDelegate
 {
   var foundIP = 0;
   var button;
-  var door;
+
   var gotIPResponse = true;
 
   function initialize()
   {
     WatchUi.BehaviorDelegate.initialize();
-    door = new RemootioDoor(0, 0); //Create garage door that is closed
+    door = new RemootioDoor(0, "Closed"); //Create garage door that is closed
   }
   
   //Callback function after web request
-  function onReceive(responseCode, data)
+  function updateIpResponse(responseCode, data)
   {
-    if (responseCode == 200) 
-    {
-    }
-    else 
-    {
-    }
     System.println("Code: " + responseCode + " Data: " + data);
     gotIPResponse = true;
     door.setGotResponse(true);
@@ -59,7 +53,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
       {
         "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
       };
-      var responseCallback = method(:onReceive);
+      var responseCallback = method(:updateIpResponse);
       Communications.makeWebRequest(url, params, options, responseCallback);
     }
   }
@@ -89,8 +83,22 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     door.switchDoor();
   }
 
+  function checkStateResponse(responseCode, data)
+  {
+    door.setDoorState(responseCode, data);
+  }
+
   function checkState()
   {
-    WatchUi.requestUpdate();
+    var url = "https://remootio-server.glitch.me/state";
+    var params = {};
+    var options = { // set the options
+    :method => Communications.HTTP_REQUEST_METHOD_GET,
+    :headers => 
+    {
+      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+    };
+    var responseCallback = method(:checkStateResponse);
+    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 }
