@@ -35,10 +35,15 @@ class RemootioDoor
   //Callback function when data is recieved from web request
   function webRequestResponse(responseCode, data)
   {
-    _gotResponse = true;
-    if(data["state"])
+    if(data)
     {
-      formatCurrentState(data["state"]);
+      System.println("code: " + responseCode + " data: " + data);
+      _gotResponse = true;
+      if(data["state"])
+      {
+        formatCurrentState(data["state"]);
+        WatchUi.requestUpdate();
+      }
     }
   }
 
