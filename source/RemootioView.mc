@@ -6,35 +6,7 @@ class RemootioView extends WatchUi.View
 {
   var stateText; //Variable to hold the object in the UI
   var currentState = "Unknown"; //Updated using call to the server
-
-  //Function to update the state text based on the current state
-  function updateStateText(data)
-  {
-    //Convert state text to first letter uppercase
-    currentState = data["state"].toCharArray();
-    currentState[0] = currentState[0].toUpper();
-    var state = "";
-    for(var i = 0; i < currentState.size(); i++)
-    {
-      state += currentState[i];
-    }
-    currentState = state;
-    System.println(currentState);
-  }
   
-  //Callback function for checking state of door
-  function onReceive(responseCode, data)
-  {
-    if (responseCode == 200) 
-    {
-      updateStateText(data);
-    }
-    else 
-    {
-      currentState = "Unknown";
-    }
-  }
-
   function initialize() 
   {
     WatchUi.View.initialize();
@@ -73,7 +45,7 @@ class RemootioView extends WatchUi.View
     View.onUpdate(dc);
   }
 
-  function doNothing()
+  function doNothing(responseCode, data)
   {
 
   }

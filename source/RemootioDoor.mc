@@ -19,24 +19,33 @@ class RemootioDoor
     _gotResponse = true;
   }
 
-  //Callback function when data is recieved from web request
-  function onReceive(responseCode, data)
+  function formatCurrentState(stateData)
   {
-    if(responseCode == 200)
+    //Convert state text to first letter uppercase
+    _currentState = stateData.toCharArray();
+    _currentState[0] = _currentState[0].toUpper();
+    var state = "";
+    for(var i = 0; i < _currentState.size(); i++)
     {
-      //RemootioView.checkState(); //Updates the text based on the state of the door
+      state += _currentState[i];
     }
-    else
-    {
-    }
-    System.println("Code: " + responseCode + " Data: " + data);
+    _currentState = state;
+  }
+
+  //Callback function when data is recieved from web request
+  function webRequestResponse(responseCode, data)
+  {
     _gotResponse = true;
+    if(data["state"])
+    {
+      formatCurrentState(data["state"]);
+    }
   }
 
   function setDoorState(responseCode, data)
   {
-    System.println(data["state"]);
-    _currentState = data["state"];
+    formatCurrentState(data["state"]);
+    WatchUi.requestUpdate();
   }
 
   //Type is either switch (0) or activate (1)
@@ -45,7 +54,9 @@ class RemootioDoor
   function switchWebRequest(type) 
   {
     var selectedDoor = _currentDoor ? "gate" : "garage";
-    var url = type ? "https://remootio-server.glitch.me/activate-" + selectedDoor : "https://remootio-server.glitch.me/switch-from-" + selectedDoor;
+    var url = type ?
+      "https://remootio-server.glitch.me/activate-" + selectedDoor :
+      "https://remootio-server.glitch.me/switch-from-" + selectedDoor;
     //Send the hash of authentication and IP address
     var params = {
       "Auth" => hashString(API_AUTH),
@@ -58,8 +69,7 @@ class RemootioDoor
     {
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
     };
-    var responseCallback = method(:onReceive);
-    System.println(url);
+    var responseCallback = method(:webRequestResponse);
     Communications.makeWebRequest(url, params, options, responseCallback);
   }
 

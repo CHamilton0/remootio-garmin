@@ -1,7 +1,7 @@
 using Toybox.Communications;
 using Toybox.WatchUi;
 using Toybox.System;
-var door;
+
 class RemootioDelegate extends WatchUi.BehaviorDelegate
 {
   var foundIP = 0;
@@ -29,7 +29,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
       door.switchState();
-      //TODO check state here and update UI
+      //TODO check state and update UI
     }
     return true;
   }
@@ -77,17 +77,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     }
   }
 
-  //Switch door function required for the button to work
-  function switchDoor()
-  {
-    door.switchDoor();
-  }
-
-  function checkStateResponse(responseCode, data)
-  {
-    door.setDoorState(responseCode, data);
-  }
-
   function checkState()
   {
     var url = "https://remootio-server.glitch.me/state";
@@ -98,7 +87,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     {
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
     };
-    var responseCallback = method(:checkStateResponse);
+    var responseCallback = door.method(:setDoorState);
     Communications.makeWebRequest(url, params, options, responseCallback);
   }
 }
