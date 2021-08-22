@@ -49,8 +49,11 @@ class RemootioDoor
 
   function setDoorState(responseCode, data)
   {
-    formatCurrentState(data["state"]);
-    WatchUi.requestUpdate();
+    if(data)
+    {
+      formatCurrentState(data["state"]);
+      WatchUi.requestUpdate();
+    }
   }
 
   //Type is either switch (0) or activate (1)
