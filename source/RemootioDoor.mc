@@ -133,4 +133,9 @@ class RemootioDoor
   {
     _gotResponse = value;
   }
+
+  function setState(state)
+  {
+    _currentState = state;
+  }
 }

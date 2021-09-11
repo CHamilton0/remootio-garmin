@@ -17,6 +17,7 @@ class RemootioView extends WatchUi.View
   function onLayout(dc) 
   {
     setLayout(Rez.Layouts.MainLayout(dc));
+    stateText = View.findDrawableById("state");
   }
 
   // Called when this View is brought to the foreground. Restore
@@ -32,9 +33,8 @@ class RemootioView extends WatchUi.View
     {
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
     };
-    var responseCallback = method(:doNothing);
+    var responseCallback = method(:waitForConnected);
     Communications.makeWebRequest(url, params, options, responseCallback);
-    stateText = View.findDrawableById("state");   
   }
 
   // Update the view
@@ -48,6 +48,12 @@ class RemootioView extends WatchUi.View
   function doNothing(responseCode, data)
   {
 
+  }
+
+  function waitForConnected(responseCode, data)
+  {
+    door.setState("Connected");
+    WatchUi.requestUpdate();
   }
 
   // Called when this View is removed from the screen. Save the

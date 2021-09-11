@@ -12,7 +12,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   function initialize()
   {
     WatchUi.BehaviorDelegate.initialize();
-    door = new RemootioDoor(0, "Closed"); //Create garage door that is closed
+    door = new RemootioDoor(0, "Connecting"); //Create garage door that is closed
   }
   
   //Callback function after web request
