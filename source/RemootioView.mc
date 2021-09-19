@@ -52,8 +52,15 @@ class RemootioView extends WatchUi.View
 
   function waitForConnected(responseCode, data)
   {
-    door.setState("Connected");
-    WatchUi.requestUpdate();
+    if(responseCode == 200)
+    {
+      door.setState("Connected");
+    }
+    else
+    {
+      door.setState("Failed to connect");
+    }
+      WatchUi.requestUpdate();
   }
 
   // Called when this View is removed from the screen. Save the

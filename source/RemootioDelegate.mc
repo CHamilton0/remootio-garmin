@@ -21,6 +21,8 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     System.println("Code: " + responseCode + " Data: " + data);
     gotIPResponse = true;
     door.setGotResponse(true);
+    door.setState("IP reset");
+    WatchUi.requestUpdate();
   }
   
   //Function for checking key press
