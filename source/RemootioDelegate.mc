@@ -6,27 +6,23 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
 {
   var foundIP = 0;
   var button;
-  var door;
+
   var gotIPResponse = true;
 
   function initialize()
   {
     WatchUi.BehaviorDelegate.initialize();
-    door = new RemootioDoor(0, 0); //Create garage door that is closed
+    door = new RemootioDoor(0, "Connecting"); //Create garage door that is closed
   }
   
   //Callback function after web request
-  function onReceive(responseCode, data)
+  function updateIpResponse(responseCode, data)
   {
-    if (responseCode == 200) 
-    {
-    }
-    else 
-    {
-    }
     System.println("Code: " + responseCode + " Data: " + data);
     gotIPResponse = true;
     door.setGotResponse(true);
+    door.setState("IP reset");
+    WatchUi.requestUpdate();
   }
   
   //Function for checking key press
@@ -35,7 +31,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
       door.switchState();
-      //TODO check state here and update UI
+      //TODO check state and update UI
     }
     return true;
   }
@@ -59,7 +55,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
       {
         "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
       };
-      var responseCallback = method(:onReceive);
+      var responseCallback = method(:updateIpResponse);
       Communications.makeWebRequest(url, params, options, responseCallback);
     }
   }
@@ -83,14 +79,17 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     }
   }
 
-  //Switch door function required for the button to work
-  function switchDoor()
-  {
-    door.switchDoor();
-  }
-
   function checkState()
   {
-    RemootioView.checkState();
+    var url = "https://remootio-server.glitch.me/state";
+    var params = {};
+    var options = { // set the options
+    :method => Communications.HTTP_REQUEST_METHOD_GET,
+    :headers => 
+    {
+      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+    };
+    var responseCallback = door.method(:setDoorState);
+    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 }

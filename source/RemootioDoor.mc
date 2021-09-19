@@ -1,4 +1,5 @@
 using Toybox.Communications;
+using Toybox.WatchUi;
 using Env;
 using Toybox.Cryptography;
 
@@ -18,18 +19,41 @@ class RemootioDoor
     _gotResponse = true;
   }
 
-  //Callback function when data is recieved from web request
-  function onReceive(responseCode, data)
+  function formatCurrentState(stateData)
   {
-    if(responseCode == 200)
+    //Convert state text to first letter uppercase
+    _currentState = stateData.toCharArray();
+    _currentState[0] = _currentState[0].toUpper();
+    var state = "";
+    for(var i = 0; i < _currentState.size(); i++)
     {
-      //RemootioView.checkState(); //Updates the text based on the state of the door
+      state += _currentState[i];
     }
-    else
+    _currentState = state;
+  }
+
+  //Callback function when data is recieved from web request
+  function webRequestResponse(responseCode, data)
+  {
+    if(data)
     {
+      System.println("code: " + responseCode + " data: " + data);
+      _gotResponse = true;
+      if(data["state"])
+      {
+        formatCurrentState(data["state"]);
+        WatchUi.requestUpdate();
+      }
     }
-    System.println("Code: " + responseCode + " Data: " + data);
-    _gotResponse = true;
+  }
+
+  function setDoorState(responseCode, data)
+  {
+    if(data)
+    {
+      formatCurrentState(data["state"]);
+      WatchUi.requestUpdate();
+    }
   }
 
   //Type is either switch (0) or activate (1)
@@ -38,7 +62,9 @@ class RemootioDoor
   function switchWebRequest(type) 
   {
     var selectedDoor = _currentDoor ? "gate" : "garage";
-    var url = type ? "https://remootio-server.glitch.me/activate-" + selectedDoor : "https://remootio-server.glitch.me/switch-from-" + selectedDoor;
+    var url = type ?
+      "https://remootio-server.glitch.me/activate-" + selectedDoor :
+      "https://remootio-server.glitch.me/switch-from-" + selectedDoor;
     //Send the hash of authentication and IP address
     var params = {
       "Auth" => hashString(API_AUTH),
@@ -51,8 +77,7 @@ class RemootioDoor
     {
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
     };
-    var responseCallback = method(:onReceive);
-    System.println(url);
+    var responseCallback = method(:webRequestResponse);
     Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
@@ -85,12 +110,8 @@ class RemootioDoor
 
   function switchState()
   {
-    if (_gotResponse)
-    {
-      _gotResponse = false;
-      switchWebRequest(1);
-      _currentState = _currentState ? 0 : 1;
-    }
+    _gotResponse = false;
+    switchWebRequest(1);
   }
 
   function getDoor()
@@ -111,5 +132,10 @@ class RemootioDoor
   function setGotResponse(value)
   {
     _gotResponse = value;
+  }
+
+  function setState(state)
+  {
+    _currentState = state;
   }
 }

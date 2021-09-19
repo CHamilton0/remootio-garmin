@@ -2,6 +2,8 @@ using Toybox.Application;
 using Toybox.System;
 using Toybox.Communications;
 
+var door;
+
 class RemootioApp extends Application.AppBase 
 {
   hidden var view;
