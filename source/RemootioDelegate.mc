@@ -18,7 +18,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   //Callback function after web request
   function updateIpResponse(responseCode, data)
   {
-    System.println("Code: " + responseCode + " Data: " + data);
     gotIPResponse = true;
     door.setGotResponse(true);
     door.setState("IP reset");
@@ -90,5 +89,11 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     };
     var responseCallback = door.method(:setDoorState);
     Communications.makeWebRequest(url, params, options, responseCallback);
+  }
+
+  function switchDoor()
+  {
+    var currentDoor = door.getDoor();
+    door.setDoor(currentDoor ? 0 : 1);
   }
 }

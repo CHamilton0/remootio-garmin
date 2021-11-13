@@ -39,7 +39,6 @@ class RemootioDoor
   {
     if(data)
     {
-      System.println("code: " + responseCode + " data: " + data);
       _gotResponse = true;
       if(data["state"])
       {
@@ -133,5 +132,6 @@ class RemootioDoor
   function setDoor(door)
   {
     _currentDoor = door;
+    WatchUi.requestUpdate();
   }
 }
