@@ -31,7 +31,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
       door.switchState();
-      //TODO check state and update UI
     }
     return true;
   }
