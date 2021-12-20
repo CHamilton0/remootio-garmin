@@ -1,12 +1,23 @@
 <layout id="MainLayout">
+    <!-- App icon -->
     <bitmap id ="icon" x="center" y="0" filename="../drawables/remootio_icon.png"> </bitmap>
+
+     <!-- Reset IP button -->
     <button x="0" y="100" width="50" height="50" background="Graphics.COLOR_RED" behavior="checkIP">
     	<state id="stateDefault" color="Graphics.COLOR_RED" />
     </button>
     <label id="IP" x="25" y="105" text="IP" justification="Graphics.TEXT_JUSTIFY_CENTER"/>
+     
+     <!-- Check state button -->
     <label id="state" text="State information" x="center" y="50" justification="Graphics.TEXT_JUSTIFY_CENTER"/>
     <button x="210" y="100" width="50" height="50" background="Graphics.COLOR_ORANGE" behavior="checkState">
     	<state id="stateDefault" color="Graphics.COLOR_ORANGE"/>
     </button>
     <bitmap id="sync" x="210" y="100" filename="../drawables/sync.png"> </bitmap>
+
+    <!-- Switch door button -->
+    <label id="door" text="Current door" x="center" y="150" justification="Graphics.TEXT_JUSTIFY_CENTER"/>
+    <button x="center" y="210" width="50" height="50" background="Graphics.COLOR_ORANGE" behavior="switchDoor">
+    	<state id="stateDefault" color="Graphics.COLOR_ORANGE"/>
+    </button>
 </layout>

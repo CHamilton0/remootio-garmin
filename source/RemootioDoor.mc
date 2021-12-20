@@ -8,7 +8,8 @@ class RemootioDoor
   private var _currentDoor;
   private var _currentState;
   private var _gotResponse;
-  const API_AUTH = Env.RemootioAPIAuth;
+  const GARAGE_API_AUTH = Env.GarageAPIAuth;
+  const GATE_API_AUTH = Env.GateAPIAuth;
 
   function initialize(door, state)
   {
@@ -19,6 +20,7 @@ class RemootioDoor
     _gotResponse = true;
   }
 
+  // Function to convert the state data to a nice look
   function formatCurrentState(stateData)
   {
     //Convert state text to first letter uppercase
@@ -37,7 +39,6 @@ class RemootioDoor
   {
     if(data)
     {
-      System.println("code: " + responseCode + " data: " + data);
       _gotResponse = true;
       if(data["state"])
       {
@@ -47,6 +48,7 @@ class RemootioDoor
     }
   }
 
+  // Function to update the state text
   function setDoorState(responseCode, data)
   {
     if(data)
@@ -56,19 +58,16 @@ class RemootioDoor
     }
   }
 
-  //Type is either switch (0) or activate (1)
-  //if type == switch, url should be /switch-from-selectedDoor
-  //if type == activate, url should be /activate-selectedDoor
-  function switchWebRequest(type) 
+  // Function to activate the current door
+  // Will send a POST request to server with the authentication
+  function activateDoor() 
   {
     var selectedDoor = _currentDoor ? "gate" : "garage";
-    var url = type ?
-      "https://remootio-server.glitch.me/activate-" + selectedDoor :
-      "https://remootio-server.glitch.me/switch-from-" + selectedDoor;
+    var url = "https://remootio-server.glitch.me/activate-" + selectedDoor;
     //Send the hash of authentication and IP address
     var params = {
-      "Auth" => hashString(API_AUTH),
-      "IP" => Application.Storage.getValue("homeIP")
+      "Auth" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
+      "IP" => Application.Storage.getValue("homeIP") // IP address is the same
     };
     // set the options
     var options = {
@@ -98,20 +97,11 @@ class RemootioDoor
     return hash.digest().toString();
   }
 
-  function switchDoor()
-  {
-    if (_gotResponse)
-    {
-      _gotResponse = false;
-      switchWebRequest(0);
-      _currentDoor = _currentDoor ? 0 : 1;
-    }
-  }
-
+  // Called from remootio delegate when button is pressed
   function switchState()
   {
     _gotResponse = false;
-    switchWebRequest(1);
+    activateDoor();
   }
 
   function getDoor()
@@ -137,5 +127,11 @@ class RemootioDoor
   function setState(state)
   {
     _currentState = state;
+  }
+
+  function setDoor(door)
+  {
+    _currentDoor = door;
+    WatchUi.requestUpdate();
   }
 }

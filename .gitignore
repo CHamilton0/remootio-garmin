@@ -4,3 +4,4 @@ source/Env.mc
 builds/Remootio.prg
 .gitignore
 builds/Remootio.prg.debug.xml
+.vscode

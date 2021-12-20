@@ -18,7 +18,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   //Callback function after web request
   function updateIpResponse(responseCode, data)
   {
-    System.println("Code: " + responseCode + " Data: " + data);
     gotIPResponse = true;
     door.setGotResponse(true);
     door.setState("IP reset");
@@ -31,7 +30,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
       door.switchState();
-      //TODO check state and update UI
     }
     return true;
   }
@@ -81,7 +79,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
 
   function checkState()
   {
-    var url = "https://remootio-server.glitch.me/state";
+    var url = door.getDoor() ? "https://remootio-server.glitch.me/gateState" : "https://remootio-server.glitch.me/state";
     var params = {};
     var options = { // set the options
     :method => Communications.HTTP_REQUEST_METHOD_GET,
@@ -91,5 +89,11 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     };
     var responseCallback = door.method(:setDoorState);
     Communications.makeWebRequest(url, params, options, responseCallback);
+  }
+
+  function switchDoor()
+  {
+    var currentDoor = door.getDoor();
+    door.setDoor(currentDoor ? 0 : 1);
   }
 }
