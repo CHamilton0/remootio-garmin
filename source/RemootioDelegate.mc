@@ -79,7 +79,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
 
   function checkState()
   {
-    var url = "https://remootio-server.glitch.me/state";
+    var url = door.getDoor() ? "https://remootio-server.glitch.me/gateState" : "https://remootio-server.glitch.me/state";
     var params = {};
     var options = { // set the options
     :method => Communications.HTTP_REQUEST_METHOD_GET,
