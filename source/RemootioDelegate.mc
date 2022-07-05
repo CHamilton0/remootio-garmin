@@ -41,20 +41,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     {
       foundIP = data.get("ip");
       Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
-
-      var url = "https://remootio-server.glitch.me/set-ip";
-      var params = 
-      {
-        "IP" => Application.Storage.getValue("homeIP")
-      };
-      var options = { // set the options
-      :method => Communications.HTTP_REQUEST_METHOD_POST,
-      :headers => 
-      {
-        "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      };
-      var responseCallback = method(:updateIpResponse);
-      Communications.makeWebRequest(url, params, options, responseCallback);
     }
   }
   
@@ -79,13 +65,22 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
 
   function checkState()
   {
-    var url = door.getDoor() ? "https://remootio-server.glitch.me/gateState" : "https://remootio-server.glitch.me/state";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
+    System.println("Check state");
+    var url = Env.CheckStateURL;
+    var params =
     {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+        "ip" => Application.Storage.getValue("homeIP"),
+        "deviceName" => door.getDoor() ? "GATE" : "GARAGE",
+        "devicePort" => door.getDoor() ? 8081 : 8080,
+        "authKey" => door.getDoor() ? door.hashString(door.GATE_API_AUTH) : door.hashString(door.GARAGE_API_AUTH),
+    };
+
+    System.println(params);
+    var options = {
+        :method => Communications.HTTP_REQUEST_METHOD_POST,
+        :headers => {
+            "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
+        },
     };
     var responseCallback = door.method(:setDoorState);
     Communications.makeWebRequest(url, params, options, responseCallback);

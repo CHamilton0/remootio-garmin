@@ -28,16 +28,6 @@ class RemootioView extends WatchUi.View
   // loading resources into memory.
   function onShow() 
   {
-    var url = "https://remootio-server.glitch.me/connect";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-    };
-    var responseCallback = method(:waitForConnected);
-    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
   // Update the view
@@ -51,7 +41,6 @@ class RemootioView extends WatchUi.View
 
   function doNothing(responseCode, data)
   {
-
   }
 
   function waitForConnected(responseCode, data)
@@ -72,15 +61,5 @@ class RemootioView extends WatchUi.View
   // memory.
   function onHide() 
   {
-    var url = "https://remootio-server.glitch.me/dc";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-    };
-    var responseCallback = method(:doNothing);
-    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 }

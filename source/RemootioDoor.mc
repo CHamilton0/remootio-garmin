@@ -51,37 +51,13 @@ class RemootioDoor
   // Function to update the state text
   function setDoorState(responseCode, data)
   {
+    System.println(responseCode);
+    System.println(data);
     if(data)
     {
-      formatCurrentState(data["state"]);
+      formatCurrentState(data);
       WatchUi.requestUpdate();
     }
-  }
-
-  // Function to activate the current door
-  // Will send a POST request to server with the authentication
-  function activateDoor() 
-  {
-    var selectedDoor = _currentDoor ? "gate" : "garage";
-    var url = "https://remootio-server.glitch.me/activate-" + selectedDoor;
-    //Send the hash of authentication and IP address
-    var params = {
-      //"Auth" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
-      "IP" => Application.Storage.getValue("homeIP") // IP address is the same
-    };
-
-    var hash = _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH);
-
-    // set the options
-    var options = {
-    :method => Communications.HTTP_REQUEST_METHOD_POST,
-    :headers => 
-    {
-      "Authorization" => "Basic " + hash,
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-    };
-    var responseCallback = method(:webRequestResponse);
-    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
   //Creates a hash based on a string and returns it
@@ -99,6 +75,32 @@ class RemootioDoor
     hash.update(newArray); // Add the byte array to the hash
     
     return hash.digest().toString();
+  }
+
+
+  // Function to activate the current door
+  // Will send a POST request to server with the authentication
+  function activateDoor() 
+  {
+    var url = Env.TriggerURL;
+    //Send the hash of authentication and IP address
+    var params =
+    {
+        "ip" => Application.Storage.getValue("homeIP"),
+        "deviceName" => _currentDoor ? "GATE" : "GARAGE",
+        "devicePort" => _currentDoor ? 8081 : 8080,
+        "authKey" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
+    };
+
+    // set the options
+    var options = {
+      :method => Communications.HTTP_REQUEST_METHOD_POST,
+      :headers => {
+        "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
+      },
+    };
+    var responseCallback = method(:webRequestResponse);
+    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
   // Called from remootio delegate when button is pressed
