@@ -95,5 +95,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   {
     var currentDoor = door.getDoor();
     door.setDoor(currentDoor ? 0 : 1);
+    checkState();
   }
 }

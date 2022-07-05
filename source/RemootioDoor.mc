@@ -66,14 +66,18 @@ class RemootioDoor
     var url = "https://remootio-server.glitch.me/activate-" + selectedDoor;
     //Send the hash of authentication and IP address
     var params = {
-      "Auth" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
+      //"Auth" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
       "IP" => Application.Storage.getValue("homeIP") // IP address is the same
     };
+
+    var hash = _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH);
+
     // set the options
     var options = {
     :method => Communications.HTTP_REQUEST_METHOD_POST,
     :headers => 
     {
+      "Authorization" => "Basic " + hash,
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
     };
     var responseCallback = method(:webRequestResponse);
