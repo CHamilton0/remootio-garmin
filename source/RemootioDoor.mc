@@ -40,11 +40,8 @@ class RemootioDoor
     if(data)
     {
       _gotResponse = true;
-      if(data["state"])
-      {
-        formatCurrentState(data["state"]);
-        WatchUi.requestUpdate();
-      }
+      formatCurrentState(data);
+      WatchUi.requestUpdate();
     }
   }
 
