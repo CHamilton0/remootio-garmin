@@ -51,8 +51,6 @@ class RemootioDoor
   // Function to update the state text
   function setDoorState(responseCode, data)
   {
-    System.println(responseCode);
-    System.println(data);
     if(data)
     {
       formatCurrentState(data);
@@ -77,6 +75,27 @@ class RemootioDoor
     return hash.digest().toString();
   }
 
+  // Check the state of the door
+  function checkState()
+  {
+    var url = Env.CheckStateURL;
+    var params =
+    {
+        "ip" => Application.Storage.getValue("homeIP"),
+        "deviceName" => door.getDoor() ? "GATE" : "GARAGE",
+        "devicePort" => door.getDoor() ? 8081 : 8080,
+        "authKey" => door.getDoor() ? door.hashString(door.GATE_API_AUTH) : door.hashString(door.GARAGE_API_AUTH),
+    };
+
+    var options = {
+        :method => Communications.HTTP_REQUEST_METHOD_POST,
+        :headers => {
+            "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
+        },
+    };
+    var responseCallback = door.method(:setDoorState);
+    Communications.makeWebRequest(url, params, options, responseCallback);
+  }
 
   // Function to activate the current door
   // Will send a POST request to server with the authentication

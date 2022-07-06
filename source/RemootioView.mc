@@ -28,6 +28,23 @@ class RemootioView extends WatchUi.View
   // loading resources into memory.
   function onShow() 
   {
+    var url = Env.CheckStateURL;
+    var params =
+    {
+        "ip" => Application.Storage.getValue("homeIP"),
+        "deviceName" => "GARAGE",
+        "devicePort" => 8080,
+        "authKey" => door.hashString(door.GARAGE_API_AUTH),
+    };
+
+    var options = {
+        :method => Communications.HTTP_REQUEST_METHOD_POST,
+        :headers => {
+            "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
+        },
+    };
+    var responseCallback = door.method(:setDoorState);
+    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
   // Update the view
@@ -41,19 +58,6 @@ class RemootioView extends WatchUi.View
 
   function doNothing(responseCode, data)
   {
-  }
-
-  function waitForConnected(responseCode, data)
-  {
-    if(responseCode == 200)
-    {
-      door.setState("Connected");
-    }
-    else
-    {
-      door.setState("Failed to connect");
-    }
-      WatchUi.requestUpdate();
   }
 
   // Called when this View is removed from the screen. Save the

@@ -63,33 +63,14 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     }
   }
 
-  function checkState()
-  {
-    System.println("Check state");
-    var url = Env.CheckStateURL;
-    var params =
-    {
-        "ip" => Application.Storage.getValue("homeIP"),
-        "deviceName" => door.getDoor() ? "GATE" : "GARAGE",
-        "devicePort" => door.getDoor() ? 8081 : 8080,
-        "authKey" => door.getDoor() ? door.hashString(door.GATE_API_AUTH) : door.hashString(door.GARAGE_API_AUTH),
-    };
-
-    System.println(params);
-    var options = {
-        :method => Communications.HTTP_REQUEST_METHOD_POST,
-        :headers => {
-            "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
-        },
-    };
-    var responseCallback = door.method(:setDoorState);
-    Communications.makeWebRequest(url, params, options, responseCallback);
+  function checkState() {
+    door.checkState();
   }
 
   function switchDoor()
   {
     var currentDoor = door.getDoor();
     door.setDoor(currentDoor ? 0 : 1);
-    checkState();
+    door.checkState();
   }
 }
