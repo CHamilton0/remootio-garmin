@@ -20,7 +20,7 @@ class RemootioDoor
     _gotResponse = true;
   }
 
-  // Function to convert the state data to a nice look
+  // Function to convert the state data to be displayed
   function formatCurrentState(stateData)
   {
     //Convert state text to first letter uppercase
@@ -134,11 +134,6 @@ class RemootioDoor
   function getCurrentState()
   {
     return _currentState;
-  }
-
-  function getGotResponse()
-  {
-    return _gotResponse;
   }
 
   function setGotResponse(value)

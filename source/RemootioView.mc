@@ -28,6 +28,7 @@ class RemootioView extends WatchUi.View
   // loading resources into memory.
   function onShow() 
   {
+    // Get the door state
     var url = Env.CheckStateURL;
     var params =
     {
@@ -54,10 +55,6 @@ class RemootioView extends WatchUi.View
     doorText.setText(door.getDoor() ? "Gate" : "Garage");
     // Call the parent onUpdate function to redraw the layout
     View.onUpdate(dc);
-  }
-
-  function doNothing(responseCode, data)
-  {
   }
 
   // Called when this View is removed from the screen. Save the
