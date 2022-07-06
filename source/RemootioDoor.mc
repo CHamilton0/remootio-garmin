@@ -20,7 +20,7 @@ class RemootioDoor
     _gotResponse = true;
   }
 
-  // Function to convert the state data to a nice look
+  // Function to convert the state data to be displayed
   function formatCurrentState(stateData)
   {
     //Convert state text to first letter uppercase
@@ -40,11 +40,8 @@ class RemootioDoor
     if(data)
     {
       _gotResponse = true;
-      if(data["state"])
-      {
-        formatCurrentState(data["state"]);
-        WatchUi.requestUpdate();
-      }
+      formatCurrentState(data);
+      WatchUi.requestUpdate();
     }
   }
 
@@ -53,31 +50,9 @@ class RemootioDoor
   {
     if(data)
     {
-      formatCurrentState(data["state"]);
+      formatCurrentState(data);
       WatchUi.requestUpdate();
     }
-  }
-
-  // Function to activate the current door
-  // Will send a POST request to server with the authentication
-  function activateDoor() 
-  {
-    var selectedDoor = _currentDoor ? "gate" : "garage";
-    var url = "https://remootio-server.glitch.me/activate-" + selectedDoor;
-    //Send the hash of authentication and IP address
-    var params = {
-      "Auth" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
-      "IP" => Application.Storage.getValue("homeIP") // IP address is the same
-    };
-    // set the options
-    var options = {
-    :method => Communications.HTTP_REQUEST_METHOD_POST,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-    };
-    var responseCallback = method(:webRequestResponse);
-    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
   //Creates a hash based on a string and returns it
@@ -97,6 +72,53 @@ class RemootioDoor
     return hash.digest().toString();
   }
 
+  // Check the state of the door
+  function checkState()
+  {
+    var url = Env.CheckStateURL;
+    var params =
+    {
+        "ip" => Application.Storage.getValue("homeIP"),
+        "deviceName" => door.getDoor() ? "GATE" : "GARAGE",
+        "devicePort" => door.getDoor() ? 8081 : 8080,
+        "authKey" => door.getDoor() ? door.hashString(door.GATE_API_AUTH) : door.hashString(door.GARAGE_API_AUTH),
+    };
+
+    var options = {
+        :method => Communications.HTTP_REQUEST_METHOD_POST,
+        :headers => {
+            "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
+        },
+    };
+    var responseCallback = door.method(:setDoorState);
+    Communications.makeWebRequest(url, params, options, responseCallback);
+  }
+
+  // Function to activate the current door
+  // Will send a POST request to server with the authentication
+  function activateDoor() 
+  {
+    var url = Env.TriggerURL;
+    //Send the hash of authentication and IP address
+    var params =
+    {
+        "ip" => Application.Storage.getValue("homeIP"),
+        "deviceName" => _currentDoor ? "GATE" : "GARAGE",
+        "devicePort" => _currentDoor ? 8081 : 8080,
+        "authKey" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
+    };
+
+    // set the options
+    var options = {
+      :method => Communications.HTTP_REQUEST_METHOD_POST,
+      :headers => {
+        "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
+      },
+    };
+    var responseCallback = method(:webRequestResponse);
+    Communications.makeWebRequest(url, params, options, responseCallback);
+  }
+
   // Called from remootio delegate when button is pressed
   function switchState()
   {
@@ -112,11 +134,6 @@ class RemootioDoor
   function getCurrentState()
   {
     return _currentState;
-  }
-
-  function getGotResponse()
-  {
-    return _gotResponse;
   }
 
   function setGotResponse(value)

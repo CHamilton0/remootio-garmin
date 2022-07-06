@@ -41,20 +41,6 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     {
       foundIP = data.get("ip");
       Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
-
-      var url = "https://remootio-server.glitch.me/set-ip";
-      var params = 
-      {
-        "IP" => Application.Storage.getValue("homeIP")
-      };
-      var options = { // set the options
-      :method => Communications.HTTP_REQUEST_METHOD_POST,
-      :headers => 
-      {
-        "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      };
-      var responseCallback = method(:updateIpResponse);
-      Communications.makeWebRequest(url, params, options, responseCallback);
     }
   }
   
@@ -77,23 +63,14 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     }
   }
 
-  function checkState()
-  {
-    var url = door.getDoor() ? "https://remootio-server.glitch.me/gateState" : "https://remootio-server.glitch.me/state";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-    };
-    var responseCallback = door.method(:setDoorState);
-    Communications.makeWebRequest(url, params, options, responseCallback);
+  function checkState() {
+    door.checkState();
   }
 
   function switchDoor()
   {
     var currentDoor = door.getDoor();
     door.setDoor(currentDoor ? 0 : 1);
+    door.checkState();
   }
 }

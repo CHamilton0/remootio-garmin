@@ -28,15 +28,23 @@ class RemootioView extends WatchUi.View
   // loading resources into memory.
   function onShow() 
   {
-    var url = "https://remootio-server.glitch.me/connect";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
+    // Get the door state
+    var url = Env.CheckStateURL;
+    var params =
     {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+        "ip" => Application.Storage.getValue("homeIP"),
+        "deviceName" => "GARAGE",
+        "devicePort" => 8080,
+        "authKey" => door.hashString(door.GARAGE_API_AUTH),
     };
-    var responseCallback = method(:waitForConnected);
+
+    var options = {
+        :method => Communications.HTTP_REQUEST_METHOD_POST,
+        :headers => {
+            "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
+        },
+    };
+    var responseCallback = door.method(:setDoorState);
     Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
@@ -49,38 +57,10 @@ class RemootioView extends WatchUi.View
     View.onUpdate(dc);
   }
 
-  function doNothing(responseCode, data)
-  {
-
-  }
-
-  function waitForConnected(responseCode, data)
-  {
-    if(responseCode == 200)
-    {
-      door.setState("Connected");
-    }
-    else
-    {
-      door.setState("Failed to connect");
-    }
-      WatchUi.requestUpdate();
-  }
-
   // Called when this View is removed from the screen. Save the
   // state of this View here. This includes freeing resources from
   // memory.
   function onHide() 
   {
-    var url = "https://remootio-server.glitch.me/dc";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-    };
-    var responseCallback = method(:doNothing);
-    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 }
