@@ -11,6 +11,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   {
     WatchUi.BehaviorDelegate.initialize();
     door = new RemootioDoor(0, "Connecting"); //Create garage door that is closed
+    door.checkState();
   }
 
   //Function for checking key press
@@ -18,7 +19,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   {
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
-      door.switchState();
+      door.activateDoor();
     }
     return true;
   }

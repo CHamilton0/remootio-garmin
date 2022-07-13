@@ -41,7 +41,6 @@ class RemootioDoor
       WatchUi.requestUpdate();
     } else
     {
-      System.println(responseCode);
       _currentState = "Failed";
       WatchUi.requestUpdate();
     }
@@ -110,12 +109,6 @@ class RemootioDoor
     };
     var responseCallback = method(:setDoorState);
     Communications.makeWebRequest(url, params, options, responseCallback);
-  }
-
-  // Called from remootio delegate when button is pressed
-  function switchState()
-  {
-    activateDoor();
   }
 
   function getDoor()
