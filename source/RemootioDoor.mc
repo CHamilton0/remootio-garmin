@@ -7,7 +7,6 @@ class RemootioDoor
 {
   private var _currentDoor;
   private var _currentState;
-  private var _gotResponse;
   const GARAGE_API_AUTH = Env.GarageAPIAuth;
   const GATE_API_AUTH = Env.GateAPIAuth;
 
@@ -17,7 +16,6 @@ class RemootioDoor
     // State 0 is closed, 1 is open
     _currentDoor = door;
     _currentState = state;
-    _gotResponse = true;
   }
 
   // Function to convert the state data to be displayed
@@ -34,23 +32,16 @@ class RemootioDoor
     _currentState = state;
   }
 
-  //Callback function when data is recieved from web request
-  function webRequestResponse(responseCode, data)
-  {
-    if(data)
-    {
-      _gotResponse = true;
-      formatCurrentState(data);
-      WatchUi.requestUpdate();
-    }
-  }
-
   // Function to update the state text
   function setDoorState(responseCode, data)
   {
-    if(data)
+    if(responseCode == 200)
     {
       formatCurrentState(data);
+      WatchUi.requestUpdate();
+    } else
+    {
+      _currentState = "Failed";
       WatchUi.requestUpdate();
     }
   }
@@ -75,6 +66,7 @@ class RemootioDoor
   // Check the state of the door
   function checkState()
   {
+    door.setState("Checking state");
     var url = Env.CheckStateURL;
     var params =
     {
@@ -115,15 +107,8 @@ class RemootioDoor
         "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
       },
     };
-    var responseCallback = method(:webRequestResponse);
+    var responseCallback = method(:setDoorState);
     Communications.makeWebRequest(url, params, options, responseCallback);
-  }
-
-  // Called from remootio delegate when button is pressed
-  function switchState()
-  {
-    _gotResponse = false;
-    activateDoor();
   }
 
   function getDoor()
@@ -134,11 +119,6 @@ class RemootioDoor
   function getCurrentState()
   {
     return _currentState;
-  }
-
-  function setGotResponse(value)
-  {
-    _gotResponse = value;
   }
 
   function setState(state)

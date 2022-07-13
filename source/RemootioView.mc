@@ -23,31 +23,6 @@ class RemootioView extends WatchUi.View
     doorText = View.findDrawableById("door");
   }
 
-  // Called when this View is brought to the foreground. Restore
-  // the state of this View and prepare it to be shown. This includes
-  // loading resources into memory.
-  function onShow() 
-  {
-    // Get the door state
-    var url = Env.CheckStateURL;
-    var params =
-    {
-        "ip" => Application.Storage.getValue("homeIP"),
-        "deviceName" => "GARAGE",
-        "devicePort" => 8080,
-        "authKey" => door.hashString(door.GARAGE_API_AUTH),
-    };
-
-    var options = {
-        :method => Communications.HTTP_REQUEST_METHOD_POST,
-        :headers => {
-            "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
-        },
-    };
-    var responseCallback = door.method(:setDoorState);
-    Communications.makeWebRequest(url, params, options, responseCallback);
-  }
-
   // Update the view
   function onUpdate(dc) 
   {
@@ -55,12 +30,5 @@ class RemootioView extends WatchUi.View
     doorText.setText(door.getDoor() ? "Gate" : "Garage");
     // Call the parent onUpdate function to redraw the layout
     View.onUpdate(dc);
-  }
-
-  // Called when this View is removed from the screen. Save the
-  // state of this View here. This includes freeing resources from
-  // memory.
-  function onHide() 
-  {
   }
 }
