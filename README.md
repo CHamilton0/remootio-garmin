@@ -10,9 +10,9 @@ ConnectIQ `Toybox.Communications.makeWebRequest` function in order to access the
 [makeWebRequest](https://developer.garmin.com/connect-iq/api-docs/Toybox/Communications.html#makeWebRequest-instance_function)
 for more details and the full API reference.
 
-# Development information
+## Development information
 
-## Environment Variables
+### Environment Variables
 
 This ConnectIQ app requires a [Env.mc](./source/Env.mc) file that contains certain environment variables that the app
 will use. An example `Env.mc` file content is below:

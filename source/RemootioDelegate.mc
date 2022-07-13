@@ -7,23 +7,12 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   var foundIP = 0;
   var button;
 
-  var gotIPResponse = true;
-
   function initialize()
   {
     WatchUi.BehaviorDelegate.initialize();
     door = new RemootioDoor(0, "Connecting"); //Create garage door that is closed
   }
-  
-  //Callback function after web request
-  function updateIpResponse(responseCode, data)
-  {
-    gotIPResponse = true;
-    door.setGotResponse(true);
-    door.setState("IP reset");
-    WatchUi.requestUpdate();
-  }
-  
+
   //Function for checking key press
   function onKey(keyEvent)
   {
@@ -41,26 +30,25 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     {
       foundIP = data.get("ip");
       Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
+      door.setState("IP is: " + foundIP);
+      WatchUi.requestUpdate();
     }
   }
   
   //Check IP address currently connected to
   function checkIP()
   {
-    if(gotIPResponse)
+    door.setState("Getting IP");
+    var url = "https://api.ipify.org?format=json";
+    var params = {};
+    var options = { // set the options
+    :method => Communications.HTTP_REQUEST_METHOD_GET,
+    :headers => 
     {
-      gotIPResponse = false;
-      var url = "https://api.ipify.org?format=json";
-      var params = {};
-      var options = { // set the options
-      :method => Communications.HTTP_REQUEST_METHOD_GET,
-      :headers => 
-      {
-        "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-      };
-      var responseCallback = method(:setIP);
-      Communications.makeWebRequest(url, params, options, method(:setIP));
-    }
+      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
+    };
+    var responseCallback = method(:setIP);
+    Communications.makeWebRequest(url, params, options, method(:setIP));
   }
 
   function checkState() {
