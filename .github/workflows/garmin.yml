@@ -1,0 +1,39 @@
+name: Connect IQ CI
+
+on:
+  push:
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+  build:
+    needs:
+      - version
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/chamilton0/connect-iq-docker:4.1.2
+      options: --entrypoint /bin/bash
+      env:
+        DEVICE: vivoactive4
+      volumes:
+        - .:/app
+        - ./keys:/keys
+        - ./bin:/build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Decode developer key
+        env:
+          ENCODED_STRING: ${{ secrets.DEVELOPER_KEY_BASE_64 }}
+        run: |
+          mkdir keys
+          echo -n "$ENCODED_STRING" | base64 -d  > ./keys/developer_key
+      - name: Copy Env properties
+        run: mv ./source/Env.mc.default ./source/Env.mc
+      - name: Build code
+        run: monkeyc -d "$DEVICE" -f /app/monkey.jungle -y /app/keys/developer_key -o /build/garmin.prg
