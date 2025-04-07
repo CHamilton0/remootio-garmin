@@ -18,7 +18,7 @@ jobs:
       - version
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/chamilton0/connect-iq-docker:4.1.2
+      image: ghcr.io/chamilton0/connect-iq-docker:8.1.0
       options: --entrypoint /bin/bash
       env:
         DEVICE: vivoactive4

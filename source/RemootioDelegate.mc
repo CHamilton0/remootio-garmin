@@ -1,6 +1,7 @@
 using Toybox.Communications;
 using Toybox.WatchUi;
 using Toybox.System;
+import Toybox.Lang;
 
 class RemootioDelegate extends WatchUi.BehaviorDelegate
 {
@@ -25,7 +26,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   }
   
   //Check the current IP address and save it in foundIP variable
-  function setIP(responseCode, data)
+  function setIP(responseCode as Number, data as Dictionary or Null) as Void
   {
     if (responseCode == 200)
     {
@@ -49,7 +50,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
       "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
     };
     var responseCallback = method(:setIP);
-    Communications.makeWebRequest(url, params, options, method(:setIP));
+    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
   function checkState() {
