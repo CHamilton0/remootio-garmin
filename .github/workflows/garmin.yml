@@ -9,7 +9,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.1.7
         with:
           fetch-depth: 0
 
@@ -28,7 +28,7 @@ jobs:
         - ./bin:/build
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.7
       - name: Decode developer key
         env:
           ENCODED_STRING: ${{ secrets.DEVELOPER_KEY_BASE_64 }}
