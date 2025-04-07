@@ -35,10 +35,6 @@ jobs:
         run: |
           mkdir keys
           echo -n "$ENCODED_STRING" | base64 -d  > ./keys/developer_key
-      - name: List drawable resources
-        run: |
-          echo "Drawable files:"
-          find ./resources/drawables -type f
       - name: Copy Env properties
         run: mv ./source/Env.mc.default ./source/Env.mc
       - name: Build code
