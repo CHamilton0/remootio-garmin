@@ -38,4 +38,7 @@ jobs:
       - name: Copy Env properties
         run: mv ./source/Env.mc.default ./source/Env.mc
       - name: Build code
-        run: monkeyc -d "$DEVICE" -f /app/monkey.jungle -y /app/keys/developer_key -o /build/garmin.prg
+        working-directory: /app
+        env:
+          DEVICE: fenix7
+        run: monkeyc -d "$DEVICE" -f monkey.jungle -y keys/developer_key -o /build/garmin.prg
