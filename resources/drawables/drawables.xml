@@ -1,5 +1,5 @@
 <drawables>
-    <bitmap id="LauncherIcon" filename="../drawables/remootio_icon.png" />
-    <bitmap id="Monkey" filename="../drawables/monkey.png" />
-    <bitmap id="Remootio" filename="../drawables/remootio.png" />
+    <bitmap id="LauncherIcon" filename="remootio_icon.png" />
+    <bitmap id="Monkey" filename="monkey.png" />
+    <bitmap id="Remootio" filename="remootio.png" />
 </drawables>
