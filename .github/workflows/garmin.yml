@@ -47,4 +47,10 @@ jobs:
       - name: Build code
         env:
           DEVICE: fenix7
-        run: monkeyc -d "$DEVICE" -f monkey.jungle -y keys/developer_key -o build/garmin.prg
+        run: monkeyc -d "$DEVICE" -f monkey.jungle -y keys/developer_key -o build/remootio-garmin.prg
+      - name: Upload generated app
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-and-bundle
+          path: |
+            build/remootio-garmin.prg
