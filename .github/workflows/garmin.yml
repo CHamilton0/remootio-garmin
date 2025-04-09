@@ -22,10 +22,6 @@ jobs:
       options: --entrypoint /bin/bash
       env:
         DEVICE: fenix7
-      volumes:
-        - .:/app
-        - ./keys:/keys
-        - ./bin:/build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,25 +33,7 @@ jobs:
           echo -n "$ENCODED_STRING" | base64 -d  > ./keys/developer_key
       - name: Copy Env properties
         run: mv ./source/Env.mc.default ./source/Env.mc
-      - name: Output $PWD
-        working-directory: /app
-        run: pwd
-      - name: Output tree
-        working-directory: /app
-        run: tree .
-      - name: Print drawables.xml
-        working-directory: /app
-        run: ls -lah resources/drawables
       - name: Build code
-        working-directory: /app
         env:
           DEVICE: fenix7
-        run: |
-          echo "--- Working directory ---"
-          pwd
-          echo "--- List drawables ---"
-          ls -la resources/drawables
-          echo "--- File content of drawables.xml ---"
-          cat resources/drawables/drawables.xml
-          echo "--- Attempt a basic monkeyc compile ---"
-          monkeyc -d "$DEVICE" -f monkey.jungle -y keys/developer_key -o build/garmin.prg
+        run: monkeyc -d "$DEVICE" -f monkey.jungle -y keys/developer_key -o build/garmin.prg
