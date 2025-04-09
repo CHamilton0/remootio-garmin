@@ -2,11 +2,12 @@ using Toybox.Communications;
 using Toybox.WatchUi;
 using Env;
 using Toybox.Cryptography;
+import Toybox.Lang;
 
 class RemootioDoor
 {
-  private var _currentDoor;
-  private var _currentState;
+  private var _currentDoor as Numeric;
+  private var _currentState as String;
   const GARAGE_API_AUTH = Env.GarageAPIAuth;
   const GATE_API_AUTH = Env.GateAPIAuth;
 
@@ -19,25 +20,25 @@ class RemootioDoor
   }
 
   // Function to convert the state data to be displayed
-  function formatCurrentState(stateData)
+  function formatCurrentState(stateData as Lang.String)
   {
     //Convert state text to first letter uppercase
-    _currentState = stateData.toCharArray();
-    _currentState[0] = _currentState[0].toUpper();
+    var stateArray = stateData.toCharArray() as Lang.Array<Lang.Char>;
+    stateArray[0] = stateArray[0].toUpper();
     var state = "";
-    for(var i = 0; i < _currentState.size(); i++)
+    for(var i = 0; i < stateArray.size(); i++)
     {
-      state += _currentState[i];
+      state += stateArray[i];
     }
     _currentState = state;
   }
 
   // Function to update the state text
-  function setDoorState(responseCode, data)
+  function setDoorState(responseCode as Number, data as Dictionary or Null) as Void
   {
-    if(responseCode == 200)
+    if(responseCode == 200 && data != null)
     {
-      formatCurrentState(data);
+      formatCurrentState(data.toString());
       WatchUi.requestUpdate();
     } else
     {
@@ -50,11 +51,11 @@ class RemootioDoor
   function hashString(string)
   {
     var hash = null;
-    var newArray = []b;
-    var chars = string.toCharArray();
+    var newArray = []b as ByteArray;
+    var chars = string.toCharArray() as Array<Char>;
     for(var i = 0; i < chars.size(); i++)
     {
-      newArray.add(chars[i]);
+      newArray = newArray.add(chars[i]);
     }
     
     hash = new Cryptography.Hash({ :algorithm => Cryptography.HASH_SHA256 }); // Create a new SHA-256 hash

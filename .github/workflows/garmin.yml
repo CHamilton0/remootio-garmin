@@ -1,0 +1,56 @@
+name: Connect IQ CI
+
+on:
+  push:
+  workflow_dispatch:
+
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: bump version
+        run: ./scripts/bumpVersion.sh
+
+      - name: commit version changes
+        if: github.ref == 'refs/heads/master'
+        run: |
+          git config --global user.name 'Version CI'
+          git config --global user.email 'chamilton0@users.noreply.github.com'
+          git commit -am "ci(version): updates version"
+          git push --force
+
+  build:
+    needs:
+      - version
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/chamilton0/connect-iq-docker:8.1.1
+      options: --entrypoint /bin/bash
+      env:
+        DEVICE: fenix7
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Decode developer key
+        env:
+          ENCODED_STRING: ${{ secrets.DEVELOPER_KEY_BASE_64 }}
+        run: |
+          mkdir keys
+          echo -n "$ENCODED_STRING" | base64 -d  > ./keys/developer_key
+      - name: Copy Env properties
+        run: mv ./source/Env.mc.default ./source/Env.mc
+      - name: Build code
+        env:
+          DEVICE: fenix7
+        run: monkeyc -d "$DEVICE" -f monkey.jungle -y keys/developer_key -o build/remootio-garmin.prg
+      - name: Upload generated app
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-and-bundle
+          path: |
+            build/remootio-garmin.prg
