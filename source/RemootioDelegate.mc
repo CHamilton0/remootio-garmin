@@ -19,6 +19,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   function onPhoneAppMessage(msg as Toybox.Communications.PhoneAppMessage) as Void
   {
     var data = msg.data;
+    System.println(data);
     if (data == null) {
       return;
     }
