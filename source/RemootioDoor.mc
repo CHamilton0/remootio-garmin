@@ -1,15 +1,12 @@
 using Toybox.Communications;
 using Toybox.WatchUi;
-using Env;
 using Toybox.Cryptography;
 import Toybox.Lang;
 
-class RemootioDoor
+class RemootioDoor extends Communications.ConnectionListener
 {
   private var _currentDoor as Numeric;
   private var _currentState as String;
-  const GARAGE_API_AUTH = Env.GarageAPIAuth;
-  const GATE_API_AUTH = Env.GateAPIAuth;
 
   function initialize(door, state)
   {
@@ -17,6 +14,8 @@ class RemootioDoor
     // State 0 is closed, 1 is open
     _currentDoor = door;
     _currentState = state;
+
+    Communications.ConnectionListener.initialize();
   }
 
   // Function to convert the state data to be displayed
@@ -67,49 +66,56 @@ class RemootioDoor
   // Check the state of the door
   function checkState()
   {
+    var listener = new Communications.ConnectionListener();
     door.setState("Checking state");
-    var url = Env.CheckStateURL;
-    var params =
-    {
-        "ip" => Application.Storage.getValue("homeIP"),
-        "deviceName" => door.getDoor() ? "GATE" : "GARAGE",
-        "devicePort" => door.getDoor() ? 8081 : 8080,
-        "authKey" => door.getDoor() ? door.hashString(door.GATE_API_AUTH) : door.hashString(door.GARAGE_API_AUTH),
-    };
+    System.println("checking state");
+    Communications.transmit("Hello World.", null, listener);
+    // var url = Env.CheckStateURL;
+    // var params =
+    // {
+    //     "ip" => Application.Storage.getValue("homeIP"),
+    //     "deviceName" => door.getDoor() ? "GATE" : "GARAGE",
+    //     "devicePort" => door.getDoor() ? 8081 : 8080,
+    //     "authKey" => door.getDoor() ? door.hashString(door.GATE_API_AUTH) : door.hashString(door.GARAGE_API_AUTH),
+    // };
 
-    var options = {
-        :method => Communications.HTTP_REQUEST_METHOD_POST,
-        :headers => {
-            "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
-        },
-    };
-    var responseCallback = door.method(:setDoorState);
-    Communications.makeWebRequest(url, params, options, responseCallback);
+    // var options = {
+    //     :method => Communications.HTTP_REQUEST_METHOD_POST,
+    //     :headers => {
+    //         "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
+    //     },
+    // };
+    // var responseCallback = door.method(:setDoorState);
+    // Communications.makeWebRequest(url, params, options, responseCallback);
+
+    // TODO: Get this from the mobile app
   }
 
   // Function to activate the current door
   // Will send a POST request to server with the authentication
   function activateDoor() 
   {
-    var url = Env.TriggerURL;
-    //Send the hash of authentication and IP address
-    var params =
-    {
-        "ip" => Application.Storage.getValue("homeIP"),
-        "deviceName" => _currentDoor ? "GATE" : "GARAGE",
-        "devicePort" => _currentDoor ? 8081 : 8080,
-        "authKey" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
-    };
+    // var url = Env.TriggerURL;
+    // //Send the hash of authentication and IP address
+    // var params =
+    // {
+    //     "ip" => Application.Storage.getValue("homeIP"),
+    //     "deviceName" => _currentDoor ? "GATE" : "GARAGE",
+    //     "devicePort" => _currentDoor ? 8081 : 8080,
+    //     "authKey" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
+    // };
 
-    // set the options
-    var options = {
-      :method => Communications.HTTP_REQUEST_METHOD_POST,
-      :headers => {
-        "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
-      },
-    };
-    var responseCallback = method(:setDoorState);
-    Communications.makeWebRequest(url, params, options, responseCallback);
+    // // set the options
+    // var options = {
+    //   :method => Communications.HTTP_REQUEST_METHOD_POST,
+    //   :headers => {
+    //     "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
+    //   },
+    // };
+    // var responseCallback = method(:setDoorState);
+    // Communications.makeWebRequest(url, params, options, responseCallback);
+
+    // TODO: Support the movile app
   }
 
   function getDoor()

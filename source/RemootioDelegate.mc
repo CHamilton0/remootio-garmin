@@ -10,9 +10,32 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
 
   function initialize()
   {
+    Communications.registerForPhoneAppMessages(method(:onPhoneAppMessage));
     WatchUi.BehaviorDelegate.initialize();
     door = new RemootioDoor(0, "Connecting"); //Create garage door that is closed
-    door.checkState();
+    //door.checkState();
+  }
+
+  function onPhoneAppMessage(msg as Toybox.Communications.PhoneAppMessage) as Void
+  {
+    var data = msg.data;
+    if (data == null) {
+      return;
+    }
+
+    // Validate the data is a Dictionary
+    if (data instanceof Toybox.Lang.Dictionary) {
+      if (data.hasKey("ip")) {
+        foundIP = data.get("ip");
+        Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
+        door.setState("IP is: " + foundIP);
+        WatchUi.requestUpdate();
+      }
+      if (data.hasKey("setting2")) {
+        var setting2 = data["setting2"];
+        System.println("Received setting2: " + setting2.toString());
+      }
+    }
   }
 
   //Function for checking key press
