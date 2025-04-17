@@ -68,54 +68,28 @@ class RemootioDoor extends Communications.ConnectionListener
   {
     var listener = new Communications.ConnectionListener();
     door.setState("Checking state");
-    System.println("checking state");
-    Communications.transmit("Hello World.", null, listener);
-    // var url = Env.CheckStateURL;
-    // var params =
-    // {
-    //     "ip" => Application.Storage.getValue("homeIP"),
-    //     "deviceName" => door.getDoor() ? "GATE" : "GARAGE",
-    //     "devicePort" => door.getDoor() ? 8081 : 8080,
-    //     "authKey" => door.getDoor() ? door.hashString(door.GATE_API_AUTH) : door.hashString(door.GARAGE_API_AUTH),
-    // };
 
-    // var options = {
-    //     :method => Communications.HTTP_REQUEST_METHOD_POST,
-    //     :headers => {
-    //         "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
-    //     },
-    // };
-    // var responseCallback = door.method(:setDoorState);
-    // Communications.makeWebRequest(url, params, options, responseCallback);
-
-    // TODO: Get this from the mobile app
+    var doorType = door.getDoor() ? "GATE" : "GARAGE";
+    System.println("checking state of " + doorType);
+    var message = {
+      "check" => doorType
+    };
+    Communications.transmit(message, null, listener);
   }
 
   // Function to activate the current door
-  // Will send a POST request to server with the authentication
   function activateDoor() 
   {
-    // var url = Env.TriggerURL;
-    // //Send the hash of authentication and IP address
-    // var params =
-    // {
-    //     "ip" => Application.Storage.getValue("homeIP"),
-    //     "deviceName" => _currentDoor ? "GATE" : "GARAGE",
-    //     "devicePort" => _currentDoor ? 8081 : 8080,
-    //     "authKey" => _currentDoor ? hashString(GATE_API_AUTH) : hashString(GARAGE_API_AUTH),
-    // };
+    var listener = new Communications.ConnectionListener();
+    door.setState("Triggering");
+    WatchUi.requestUpdate();
 
-    // // set the options
-    // var options = {
-    //   :method => Communications.HTTP_REQUEST_METHOD_POST,
-    //   :headers => {
-    //     "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON,
-    //   },
-    // };
-    // var responseCallback = method(:setDoorState);
-    // Communications.makeWebRequest(url, params, options, responseCallback);
-
-    // TODO: Support the movile app
+    var doorType = door.getDoor() ? "GATE" : "GARAGE";
+    System.println("triggering " + doorType);
+    var message = {
+      "trigger" => doorType
+    };
+    Communications.transmit(message, null, listener);
   }
 
   function getDoor()

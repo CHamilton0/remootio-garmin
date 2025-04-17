@@ -13,7 +13,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     Communications.registerForPhoneAppMessages(method(:onPhoneAppMessage));
     WatchUi.BehaviorDelegate.initialize();
     door = new RemootioDoor(0, "Connecting"); //Create garage door that is closed
-    //door.checkState();
+    door.checkState();
   }
 
   function onPhoneAppMessage(msg as Toybox.Communications.PhoneAppMessage) as Void
@@ -26,15 +26,14 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
 
     // Validate the data is a Dictionary
     if (data instanceof Toybox.Lang.Dictionary) {
-      if (data.hasKey("ip")) {
-        foundIP = data.get("ip");
-        Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
-        door.setState("IP is: " + foundIP);
+      if (data.hasKey("state")) {
+        door.setState(data.get("state"));
         WatchUi.requestUpdate();
       }
-      if (data.hasKey("setting2")) {
-        var setting2 = data["setting2"];
-        System.println("Received setting2: " + setting2.toString());
+      if (data.hasKey("error")) {
+        door.setState("Error");
+        WatchUi.requestUpdate();
+        System.println("Error: " + data.get("error"));
       }
     }
   }
@@ -42,39 +41,12 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
   //Function for checking key press
   function onKey(keyEvent)
   {
+    System.println(keyEvent.getKey());
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
       door.activateDoor();
     }
     return true;
-  }
-  
-  //Check the current IP address and save it in foundIP variable
-  function setIP(responseCode as Number, data as Dictionary or Null) as Void
-  {
-    if (responseCode == 200)
-    {
-      foundIP = data.get("ip");
-      Application.Storage.setValue("homeIP", foundIP); //Save IP address into homeIP storage
-      door.setState("IP is: " + foundIP);
-      WatchUi.requestUpdate();
-    }
-  }
-  
-  //Check IP address currently connected to
-  function checkIP()
-  {
-    door.setState("Getting IP");
-    var url = "https://api.ipify.org?format=json";
-    var params = {};
-    var options = { // set the options
-    :method => Communications.HTTP_REQUEST_METHOD_GET,
-    :headers => 
-    {
-      "Content-Type" => Communications.REQUEST_CONTENT_TYPE_JSON},
-    };
-    var responseCallback = method(:setIP);
-    Communications.makeWebRequest(url, params, options, responseCallback);
   }
 
   function checkState() {
