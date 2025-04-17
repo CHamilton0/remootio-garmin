@@ -45,7 +45,11 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
     if(keyEvent.getKey() == 4) //If key is start/stop key
     {
       door.activateDoor();
+    } else if(keyEvent.getKey() == 5) //If key is back key
+    {
+      WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
     }
+
     return true;
   }
 
