@@ -47,6 +47,7 @@ class RemootioDelegate extends WatchUi.BehaviorDelegate
       door.activateDoor();
     } else if(keyEvent.getKey() == 5) //If key is back key
     {
+      door.disconnect();
       WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
     }
 
