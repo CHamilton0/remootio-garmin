@@ -72,7 +72,8 @@ class RemootioDoor extends Communications.ConnectionListener
     var doorType = door.getDoor() ? "GATE" : "GARAGE";
     System.println("checking state of " + doorType);
     var message = {
-      "check" => doorType
+      "type" => "check",
+      "door" => doorType
     };
     Communications.transmit(message, null, listener);
   }
@@ -87,7 +88,8 @@ class RemootioDoor extends Communications.ConnectionListener
     var doorType = door.getDoor() ? "GATE" : "GARAGE";
     System.println("triggering " + doorType);
     var message = {
-      "trigger" => doorType
+      "type" => "trigger",
+      "door" => doorType
     };
     Communications.transmit(message, null, listener);
   }
@@ -111,5 +113,16 @@ class RemootioDoor extends Communications.ConnectionListener
   {
     _currentDoor = door;
     WatchUi.requestUpdate();
+  }
+
+  function disconnect()
+  {
+    var listener = new Communications.ConnectionListener();
+
+    System.println("Disconnecting");
+    var message = {
+      "type" => "disconnect"
+    };
+    Communications.transmit(message, null, listener);
   }
 }
